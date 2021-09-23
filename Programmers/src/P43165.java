@@ -22,7 +22,7 @@ class Solution6 {
 }
 
 
-public class K43165 {
+public class P43165 {
     public static void main(String[] args) {
         Solution6 sol = new Solution6();
         int ans = 0;

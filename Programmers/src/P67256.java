@@ -127,7 +127,7 @@ class Solution4 {
     }
 }
 
-public class K67256 {
+public class P67256 {
     public static void main(String[] args) {
         Solution4 sol = new Solution4();
         int[] a = {1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5};

@@ -17,7 +17,7 @@ class Solution1 {
     }
 }
 
-public class K81301 {
+public class P81301 {
     public static void main(String[] args) {
         Solution1 sol = new Solution1();
         int ans = sol.solution("one4seveneight");

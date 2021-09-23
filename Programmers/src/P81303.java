@@ -111,7 +111,7 @@ class Solution2 {
     }
 }
 
-public class K81303 {
+public class P81303 {
     public static void main(String[] args) {
         Solution2 sol = new Solution2();
 //        String[] cmd = {"D 2", "C", "U 3", "C", "D 4", "C", "U 2", "Z", "Z"};

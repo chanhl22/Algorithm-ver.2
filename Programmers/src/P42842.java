@@ -18,7 +18,7 @@ class Solution18 {
 }
 
 
-public class K42842 {
+public class P42842 {
     public static void main(String[] args) {
         Solution18 sol = new Solution18();
         //int[] ans = sol.solution(10, 2);

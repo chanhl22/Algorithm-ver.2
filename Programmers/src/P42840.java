@@ -79,7 +79,7 @@ class Solution9 {
 }
 
 
-public class K42840 {
+public class P42840 {
     public static void main(String[] args) {
         Solution9 sol = new Solution9();
         int[] ans = {};

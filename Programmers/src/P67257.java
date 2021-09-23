@@ -11,7 +11,7 @@ class Solution5 {
 }
 
 
-public class K67257 {
+public class P67257 {
     public static void main(String[] args) {
         Solution5 sol = new Solution5();
         long ans = sol.solution("100-200*300-500+20");

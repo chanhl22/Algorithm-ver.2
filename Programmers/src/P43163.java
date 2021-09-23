@@ -56,7 +56,7 @@ class Solution8 {
 }
 
 
-public class K43163 {
+public class P43163 {
     public static void main(String[] args) {
         Solution8 sol = new Solution8();
         int ans = 0;

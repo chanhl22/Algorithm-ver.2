@@ -45,7 +45,7 @@ class Solution17 {
 }
 
 
-public class K42839 {
+public class P42839 {
     public static void main(String[] args) {
         Solution17 sol = new Solution17();
         int ans = 0;

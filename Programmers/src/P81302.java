@@ -62,7 +62,7 @@ class Solution3 {
     }
 }
 
-public class K81302 {
+public class P81302 {
     public static void main(String[] args) {
         Solution3 sol = new Solution3();
         String[][] a = {{"POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"},
