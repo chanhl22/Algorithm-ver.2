@@ -3,7 +3,7 @@ import java.util.Queue;
 
 class Solution30 {
     public int solution(int bridge_length, int weight, int[] truck_weights) {
-        int answer = 1;
+        int answer = 2;
         Queue<Integer> q = new LinkedList<>();
         Queue<Integer> bridge = new LinkedList<>();
         q.add(truck_weights[0]);
@@ -45,7 +45,9 @@ public class P42583 {
     public static void main(String[] args) {
         Solution30 sol = new Solution30();
         int ans = 0;
-        ans = sol.solution(2, 10, new int[]{7, 4, 5, 6});
+        //ans = sol.solution(2, 10, new int[]{7, 4, 5, 6});
+        ans = sol.solution(100, 100, new int[]{10});
+        //ans = sol.solution(100, 100, new int[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 10});
         System.out.println(ans);
     }
 }
