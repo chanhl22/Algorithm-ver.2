@@ -9,6 +9,10 @@ public class B4256 {
             if (in[i] == root_index) {
                 post(root + 1, s, i);
                 post(root + i + 1 - s, i + 1, e);
+                //s를 빼야하는 이유?
+                //i는 s부터 시작하기 때문
+                //i는 inorder의 왼쪽 자식 부분 만큼만 움직여야 하는데
+                //시작값이 0이 아니기 때문에 시작값을 빼서 왼쪽 자식의 개수만큼 맞춰줘야한다.
                 System.out.print(root_index + " ");
             }
         }
