@@ -21,7 +21,7 @@ class Solution39 {
     }
 }
 
-public class P320108_2 {
+public class P12901 {
     public static void main(String[] args) {
         Solution39 sol = new Solution39();
         String ans = sol.solution(5, 24);
