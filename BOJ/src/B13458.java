@@ -11,11 +11,21 @@ public class B13458 {
         int b = sc.nextInt();
         int c = sc.nextInt();
         long ans = 0;
+//        for (int i = 0; i < n; i++) {
+//            if (a[i] - b <= 0) {
+//                ans += 1;
+//            } else {
+//                ans += 1;
+//                if ((a[i] - b) % c == 0) {
+//                    ans += (a[i] - b) / c;
+//                } else {
+//                    ans += (a[i] - b) / c + 1;
+//                }
+//            }
+//        }
         for (int i = 0; i < n; i++) {
-            if (a[i] - b <= 0) {
-                ans += 1;
-            } else {
-                ans += 1;
+            ans += 1;
+            if (a[i] - b > 0) {
                 if ((a[i] - b) % c == 0) {
                     ans += (a[i] - b) / c;
                 } else {
