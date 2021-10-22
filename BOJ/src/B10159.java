@@ -55,7 +55,7 @@ public class B10159 {
 //            for (int i = 1; i <= n; i++) {
 //                for (int j = 1; j <= n; j++) {
 //                    if (i == j) continue;
-//                    //단방향이므로 i->k 와 k->j가 된다면 i->j에 1을 넣어줌
+//                    //단방향이므로 i->k 와 k->j가 1이라면 i->j에 1을 넣어줌
 //                    if (a[i][k] == 1 && a[k][j] == 1) {
 //                        a[i][j] = 1;
 //                    }
