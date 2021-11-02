@@ -19,7 +19,7 @@ public class B1700 {
                 if (m.size() < n) { //멀티탭에 공간 있음
                     m.add(use[i]);
                 } else { //멀티탭에 공간 없음
-                    int[] check = new int[m.size()];
+                    int[] check = new int[m.size()]; //가장 처음 만나는 것의 인덱스 저장
                     for (int j = 0; j < m.size(); j++) {
                         for (int l = i + 1; l <= k; l++) {
                             if (m.get(j) == use[l]) {
@@ -29,6 +29,7 @@ public class B1700 {
                         }
                     }
                     boolean ok = false;
+                    //다시 사용하지 않는 기기가 있다면
                     for (int j = 0; j < m.size(); j++) {
                         if (check[j] == 0) {
                             m.set(j, use[i]);
@@ -40,6 +41,7 @@ public class B1700 {
                         ans++;
                         continue;
                     }
+                    //가장 처음 동일한 기기를 만났을 때 기간이 더 긴 것을 선택
                     int max = 0;
                     int index = 0;
                     for (int j = 0; j < m.size(); j++) {
