@@ -31,6 +31,19 @@ public class B1043 {
                 }
             }
         }
+
+        // 반례를 위한 작업
+        /*
+        4 5
+        1 1
+        1 1
+        1 2
+        1 3
+        2 4 2
+        2 4 1
+
+        answer : 1
+         */
         for (int k = 0; k < m; k++) {
             for (int i = 0; i < m; i++) {
                 boolean ok = false;
