@@ -1,3 +1,5 @@
+//playtime = 58:01
+
 import java.util.Scanner;
 
 public class B2580 {
