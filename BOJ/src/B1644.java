@@ -60,6 +60,8 @@ public class B1644 {
                 j++;
             }
         }
+        
+        //투 포인터 적용
         int left = 0;
         int right = 0;
         int sum = prime[0];
