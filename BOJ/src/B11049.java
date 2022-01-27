@@ -28,7 +28,7 @@ public class B11049 {
     }
 }
 
-
+//Another Solution
 //import java.io.*;
 //import java.util.*;
 //
