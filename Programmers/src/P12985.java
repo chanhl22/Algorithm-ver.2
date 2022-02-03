@@ -20,6 +20,22 @@ class Solution87 {
     }
 }
 
+//Add Another Solution
+//class Solution
+//{
+//    public int solution(int n, int a, int b)
+//    {
+//        int round = 0;
+//        while(a != b)
+//        {
+//            a = a/2 + a%2;
+//            b = b/2 + b%2;
+//            round++;
+//        }
+//        return round;
+//    }
+//}
+
 public class P12985 {
     public static void main(String[] args) {
         Solution87 sol = new Solution87();
