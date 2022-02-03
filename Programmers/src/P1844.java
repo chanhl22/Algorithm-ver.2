@@ -39,8 +39,7 @@ class Solution89 {
 public class P1844 {
     public static void main(String[] args) {
         Solution89 sol = new Solution89();
-        int ans = 0;
-        ans = sol.solution(new int[][]{{1, 0, 1, 1, 1}, {1, 0, 1, 0, 1}, {1, 0, 1, 1, 1}, {1, 1, 1, 0, 1}, {0, 0, 0, 0, 1}});
+        int ans = sol.solution(new int[][]{{1, 0, 1, 1, 1}, {1, 0, 1, 0, 1}, {1, 0, 1, 1, 1}, {1, 1, 1, 0, 1}, {0, 0, 0, 0, 1}});
         System.out.println(ans);
     }
 }
