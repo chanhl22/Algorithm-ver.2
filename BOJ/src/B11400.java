@@ -1,6 +1,5 @@
 //playtime = 38:28
-//답은 나오는데 메모리 초과
-
+//답은 나오는데 메모리 초과과
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -8,8 +7,6 @@ import java.util.Scanner;
 
 public class B11400 {
     static int v;
-    static int[] dx = {0, 0, -1, 1};
-    static int[] dy = {-1, 1, 0, 0};
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
