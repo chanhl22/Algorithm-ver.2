@@ -1,5 +1,6 @@
 //playtime = 38:28
-//답은 나오는데 메모리 초과과
+//답은 나오는데 메모리 초과
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
