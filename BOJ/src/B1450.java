@@ -28,13 +28,13 @@ public class B1450 {
         bBruteForce(n / 2, 0);
         Collections.sort(aSum);
         Collections.sort(bSum);
-        bw.write(twoPointer(aSum, bSum) + "\n");
+        bw.write(findAllCases(aSum, bSum) + "\n");
         bw.flush();
         br.close();
         bw.close();
     }
 
-    private static int twoPointer(ArrayList<Integer> aSum, ArrayList<Integer> bSum) {
+    private static int findAllCases(ArrayList<Integer> aSum, ArrayList<Integer> bSum) {
         int result = 0;
         int temp = bSum.size() - 1;
         for (int i = 0; i < aSum.size(); i++) {
