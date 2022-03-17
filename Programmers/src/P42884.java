@@ -3,28 +3,22 @@
 import java.util.*;
 
 class Solution105 {
-    static final int START_VALUE = -30000;
-
     public int solution(int[][] routes) {
         Arrays.sort(routes, (o1, o2) -> o1[0] - o2[0]);
 
         int n = routes.length;
-        int endPoint = START_VALUE;
         int index = 0;
         int count = 0;
+        int endPoint = 0;
         while (index < n) {
-            if (endPoint < routes[index][0]) {
-                endPoint = routes[index][0];
-            } else {
-                endPoint = routes[index][1];
-                count++;
-                index++;
-                while (index < n && endPoint >= routes[index][0]) {
-                    if (endPoint >= routes[index][1]) {
-                        endPoint = routes[index][1];
-                    }
-                    index++;
+            endPoint = routes[index][1];
+            count++;
+            index++;
+            while (index < n && endPoint >= routes[index][0]) {
+                if (endPoint >= routes[index][1]) {
+                    endPoint = routes[index][1];
                 }
+                index++;
             }
         }
         return count;
@@ -39,11 +33,11 @@ class Solution105 {
 //    public int solution(int[][] routes) {
 //        Arrays.sort(routes, (a, b) -> Integer.compare(a[1], b[1]));
 //        int ans = 0;
-//        int last_camera = Integer.MIN_VALUE;
+//        int endPoint = Integer.MIN_VALUE;
 //        for (int[] a : routes) {
-//            if (last_camera < a[0]) {
+//            if (endPoint < a[0]) {
 //                ++ans;
-//                last_camera = a[1];
+//                endPoint = a[1];
 //            }
 //        }
 //        return ans;
