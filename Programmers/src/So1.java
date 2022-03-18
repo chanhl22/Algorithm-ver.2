@@ -2,175 +2,107 @@ import java.util.Stack;
 
 class Solution68 {
     public int solution(String s) {
-        int answer = 0;
-
-        boolean check = check_rev(s);
-
-        if (!check) {
-            s = reverse_string(s);
-        }
-
-        int[] index = index_check(s);
-        int first = index[0];
-        int last = index[1];
-
-        String str = s.substring(first, last);
-        if (str.equals("")) {
-            return 1;
-        }
-        if (str.charAt(0) == '(') {
-            answer = count_string(str, '(', ')');
-        } else if (str.charAt(0) == '[') {
-            answer = count_string(str, '[', ']');
-        } else if (str.charAt(0) == '{') {
-            answer = count_string(str, '{', '}');
-        }
+        char remove_bracket = check_bracket(s);
+        int answer = insert_bracket(remove_bracket, s);
         return answer;
     }
 
-    private int[] index_check(String s) {
-        int[] ret = new int[2];
-        Stack<Character> stack = new Stack<>();
-        int first = 0; //처음 인덱스
-        int last = s.length(); //마지막 인덱스
-        int size = 0;
-        for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-            size++;
-            if (ch == '(' || ch == '[' || ch == '{') {
-                stack.push(ch);
-            } else if (ch == ')') {
-                if (stack.peek() == '(') {
-                    stack.pop();
-                    if (stack.isEmpty()) {
-                        size = 0;
-                    }
-                } else {
-                    size -= 2;
-                    last = i;
-                    break;
-                }
-            } else if (ch == ']') {
-                if (stack.peek() == '[') {
-                    stack.pop();
-                    if (stack.isEmpty()) {
-                        size = 0;
-                    }
-                } else {
-                    size -= 2;
-                    last = i;
-                    break;
-                }
-            } else if (ch == '}') {
-                if (stack.peek() == '{') {
-                    stack.pop();
-                    if (stack.isEmpty()) {
-                        size = 0;
-                    }
-                } else {
-                    size -= 2;
-                    last = i;
-                    break;
-                }
-            }
-        }
-        first = last - size;
-        ret[0] = first;
-        ret[1] = last;
-        return ret;
-    }
-
-    private boolean check_rev(String s) {
-        int cnt1 = 0;
-        int cnt2 = 0;
-        for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-            if (ch == '(' || ch == '[' || ch == '{') {
-                cnt1++;
-            } else if (ch == ')' || ch == ']' || ch == '}') {
-                cnt2++;
-            }
-        }
-        //check = true -> )]}가 없음
-        //check = false -> ([{가 없음
-        boolean check = false;
-        if (cnt1 > cnt2) {
-            check = true;
-        }
-        return check;
-    }
-
-    private String reverse_string(String s) {
-        String ret = "";
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '{') {
-                ret = "}" + ret;
-            } else if (s.charAt(i) == '}') {
-                ret = "{" + ret;
-            } else if (s.charAt(i) == '(') {
-                ret = ")" + ret;
-            } else if (s.charAt(i) == ')') {
-                ret = "(" + ret;
-            } else if (s.charAt(i) == '[') {
-                ret = "]" + ret;
-            } else if (s.charAt(i) == ']') {
-                ret = "[" + ret;
-            }
-        }
-        return ret;
-    }
-
-    private int count_string(String str, char s1, char s2) {
-        int ret = 0;
+    private int insert_bracket(char remove_bracket, String s) {
         int count = 0;
-        boolean ok = false;
-        for (int i = 0; i < str.length(); i++) {
-            int ch = str.charAt(i);
-            if (ch == '(') {
-                if (str.charAt(0) == '(') {
-                    ret++;
-                    continue;
+        int n = s.length();
+        if (remove_bracket == '(' || remove_bracket == '[' || remove_bracket == '{') {
+            for (int i = 0; i < n; i++) {
+                String temp = "";
+                for (int j = 0; j < n; j++) {
+                    if (i == j) {
+                        temp += remove_bracket;
+                    }
+                    temp += s.charAt(j);
                 }
-                count++;
-                while (true) {
-                    i++;
-                    ok = true;
-                    if (str.charAt(i) == ')') {
-                        break;
+                if (correct_bracket(temp)) {
+                    count++;
+                }
+            }
+        } else {
+            for (int i = 0; i < n; i++) {
+                String temp = "";
+                for (int j = 0; j < n; j++) {
+                    temp += s.charAt(j);
+                    if (i == j) {
+                        temp += remove_bracket;
                     }
                 }
-            } else if (ch == '[') {
-                if (str.charAt(0) == '[') {
-                    ret++;
-                    continue;
-                }
-                count++;
-                while (true) {
-                    i++;
-                    ok = true;
-                    if (str.charAt(i) == ']') {
-                        break;
-                    }
-                }
-            } else if (ch == '{') {
-                if (str.charAt(0) == '{') {
-                    ret++;
-                    continue;
-                }
-                count++;
-                while (true) {
-                    i++;
-                    ok = true;
-                    if (str.charAt(i) == '}') {
-                        break;
-                    }
+                if (correct_bracket(temp)) {
+                    count++;
                 }
             }
         }
-        if (count != 0) {
-            return (ret * 2) - 1 + count;
+        return count;
+    }
+
+    private boolean correct_bracket(String s) {
+        int n = s.length();
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < n; i++) {
+            if (!stack.isEmpty() && stack.peek() == '(' && s.charAt(i) == ')') {
+                stack.pop();
+            } else if (!stack.isEmpty() && stack.peek() == '{' && s.charAt(i) == '}') {
+                stack.pop();
+            } else if (!stack.isEmpty() && stack.peek() == '[' && s.charAt(i) == ']') {
+                stack.pop();
+            } else {
+                stack.add(s.charAt(i));
+            }
         }
-        return (ok ? ret * 2 + count : (ret * 2) - 1 + count);
+        if (stack.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private char check_bracket(String s) {
+        int n = s.length();
+        int a = 0; // (
+        int b = 0; // )
+        int c = 0; // [
+        int d = 0; // ]
+        int e = 0; // {
+        int f = 0; // }
+        for (int i = 0; i < n; i++) {
+            if (s.charAt(i) == '(') {
+                a++;
+            } else if (s.charAt(i) == ')') {
+                b++;
+            } else if (s.charAt(i) == '[') {
+                c++;
+            } else if (s.charAt(i) == ']') {
+                d++;
+            } else if (s.charAt(i) == '{') {
+                e++;
+            } else if (s.charAt(i) == '}') {
+                f++;
+            }
+        }
+        if (a != b) {
+            if (a > b) {
+                return ')';
+            } else {
+                return '(';
+            }
+        } else if (c != d) {
+            if (c > d) {
+                return ']';
+            } else {
+                return '[';
+            }
+        } else {
+            if (e > f) {
+                return '}';
+            } else {
+                return '{';
+            }
+        }
     }
 }
 
@@ -179,14 +111,17 @@ public class So1 {
     public static void main(String[] args) {
         Solution68 sol = new Solution68();
         int ans = 0;
-//        ans = sol.solution("[]([[]){}");
-//        ans = sol.solution("{([()]))}");
-//        ans = sol.solution("(()()()");
-//        ans = sol.solution("[]([{{}}[]){}");
-//        ans = sol.solution("[]([[][]){}");
-//        ans = sol.solution("(()()");
-//        ans = sol.solution("()({}{{}}{}{}{}{}{}()");
-        ans = sol.solution("({(})");
+//        ans = sol.solution("[]([[]){}"); //3
+//        ans = sol.solution("{([()]))}"); //4
+//        ans = sol.solution("(()()()"); //7
+//        ans = sol.solution("[]([{{}}[]){}"); //4
+//        ans = sol.solution("[]([[][]){}"); //5
+//        ans = sol.solution("(()()"); //5
+//        ans = sol.solution("()({}{{}}{}{}{}{}{}()"); //10
+//        ans = sol.solution("("); //1
+//        ans = sol.solution(")"); //1
+//        ans = sol.solution("()())()"); //5
+        ans = sol.solution("([{}]()[{}]()))"); //9
         System.out.println(ans);
     }
 }
