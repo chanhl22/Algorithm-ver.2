@@ -107,7 +107,7 @@ class Solution68 {
 }
 
 
-public class So1 {
+public class So1_1 {
     public static void main(String[] args) {
         Solution68 sol = new Solution68();
         int ans = 0;
