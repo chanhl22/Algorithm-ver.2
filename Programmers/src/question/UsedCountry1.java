@@ -1,6 +1,6 @@
 package question;
 
-class Solution112 {
+class Solution116 {
     public String solution(String s) {
         StringBuilder sb = new StringBuilder();
         int n = s.length();
@@ -170,7 +170,7 @@ class Solution112 {
 
 public class UsedCountry1 {
     public static void main(String[] args) {
-        Solution112 sol = new Solution112();
+        Solution116 sol = new Solution116();
 //        String ans = sol.solution("44335550555666");
 //        String ans = sol.solution("9666775553");
         String ans = sol.solution("2220281");
