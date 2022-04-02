@@ -3,7 +3,7 @@ package question;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
-class Solution114 {
+class Solution118 {
     public int solution(int[] A, int[] B) {
         int answer = -1;
         int n = A.length;
@@ -30,7 +30,7 @@ class Solution114 {
 
 public class UsedCountry3 {
     public static void main(String[] args) {
-        Solution114 sol = new Solution114();
+        Solution118 sol = new Solution118();
         int ans = 0;
         ans = sol.solution(new int[]{5, 1, 3, 7}, new int[]{2, 2, 6, 8});
 //        ans = sol.solution(new int[]{2, 2, 2, 2}, new int[]{1, 1, 1, 1});

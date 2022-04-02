@@ -1,6 +1,6 @@
 package question;
 
-class Solution115 {
+class Solution119 {
     public int solution(String[] strs, String t) {
         int answer = Integer.MAX_VALUE;
         int[] dp = new int[t.length()];
@@ -28,7 +28,7 @@ class Solution115 {
 
 public class UsedCountry4 {
     public static void main(String[] args) {
-        Solution115 sol = new Solution115();
+        Solution119 sol = new Solution119();
         int ans = 0;
 //        ans = sol.solution(new String[]{"ba","na","n","a"}, "banana");
 //        ans = sol.solution(new String[]{"app","ap","p","l","e","ple","pp"}, "apple");

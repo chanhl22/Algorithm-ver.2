@@ -1,6 +1,6 @@
 package question;
 
-class Solution113 {
+class Solution117 {
     static int n;
     static int m;
     static boolean[][] visited;
@@ -44,7 +44,7 @@ class Solution113 {
 
 public class UsedCountry2 {
     public static void main(String[] args) {
-        Solution113 sol = new Solution113();
+        Solution117 sol = new Solution117();
         int ans = 0;
 //        ans = sol.solution(new int[][]{{3, 2, 3, 2}, {2, 1, 1, 2}, {1, 1, 2, 1}, {4, 1, 1, 1}});
         ans = sol.solution(new int[][]{{4,2,3,2}, {2,1,2,4}, {1,2,3,1}, {4,1,4,3}});
