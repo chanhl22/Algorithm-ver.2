@@ -1,3 +1,5 @@
+//시간초과
+
 import java.util.Scanner;
 
 public class B10775 {
