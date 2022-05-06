@@ -30,9 +30,7 @@ public class B2302 {
                 count++;
             }
         }
-        if (count != 0) {
-            ans *= dp[count];
-        }
+        ans *= dp[count];
         System.out.println(ans);
     }
 }
