@@ -2,7 +2,7 @@ package question;
 
 import java.util.Arrays;
 
-class Solution114 {
+class Solution132 {
     public int[] solution(int rows, int columns, int[][] lands) {
         int[] answer = {};
         int[][] all = new int[rows][columns];
@@ -16,7 +16,7 @@ class Solution114 {
 
 public class Dev3_2_2022 {
     public static void main(String[] args) {
-        Solution114 sol = new Solution114();
+        Solution132 sol = new Solution132();
         int[] ans = sol.solution(5, 6, new int[][]{{2, 2}, {2, 3}, {2, 4}, {3, 2}, {3, 5}, {4, 3}, {4, 4}});
         System.out.println(Arrays.toString(ans));
     }

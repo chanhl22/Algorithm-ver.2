@@ -1,6 +1,6 @@
 package question;
 
-class Solution110 {
+class Solution130 {
     public int solution(int[] grade) {
         int answer = 0;
         boolean firstCheck = checkGrade(grade);
@@ -39,7 +39,7 @@ class Solution110 {
 
 public class Dev1_2_2022 {
     public static void main(String[] args) {
-        Solution110 sol = new Solution110();
+        Solution130 sol = new Solution130();
         int ans = 0;
 //        ans = sol.solution(new int[]{2, 1, 3});
 //        ans = sol.solution(new int[]{1, 2, 3});

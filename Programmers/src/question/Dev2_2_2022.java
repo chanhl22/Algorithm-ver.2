@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class Solution111 {
+class Solution131 {
 
     static int x;
     static int y;
@@ -73,7 +73,7 @@ class Solution111 {
 
 public class Dev2_2_2022 {
     public static void main(String[] args) {
-        Solution111 sol = new Solution111();
+        Solution131 sol = new Solution131();
 //        int[][] ans = sol.solution(4, true);
         int[][] ans = sol.solution(5, false);
         System.out.println(Arrays.deepToString(ans));
