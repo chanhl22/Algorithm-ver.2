@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
 class Student2 {
@@ -87,7 +86,7 @@ public class B1713 {
                 }
             }
         }
-        Collections.sort(list, (o1, o2) -> o1.index - o2.index);
+        list.sort((o1, o2) -> o1.index - o2.index);
         for (Student2 student : list) {
             System.out.print(student.index + " ");
         }
