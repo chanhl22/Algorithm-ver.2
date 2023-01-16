@@ -1,24 +1,13 @@
-//playtime = 29:49
-//시간초과..
+//playtime = 01:02:33
 
 class Solution140107 {
     public long solution(int k, int d) {
         long answer = 0;
-        for (int i = 0; i <= d; i += k) {
-            for (int j = 0; j <= d; j += k) {
-                if (calDist(i, j, d)) {
-                    answer += 1;
-                } else {
-                    break;
-                }
-            }
+        for (long i = 0; i <= d; i += k) {
+            long y = (long) Math.sqrt((long) Math.pow(d, 2) - (long) Math.pow(i, 2)) / k;
+            answer += y + 1;
         }
-
         return answer;
-    }
-
-    private boolean calDist(long i, long j, long d) {
-        return d * d >= i * i + j * j;
     }
 }
 
