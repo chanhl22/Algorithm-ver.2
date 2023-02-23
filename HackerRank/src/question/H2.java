@@ -1,3 +1,5 @@
+package question;
+
 import java.util.Scanner;
 
 public class H2 {

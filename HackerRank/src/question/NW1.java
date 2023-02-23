@@ -1,3 +1,5 @@
+package question;
+
 class Solution30 {
     static int n;
     static int m;
