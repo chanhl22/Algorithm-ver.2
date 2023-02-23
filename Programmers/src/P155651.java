@@ -8,8 +8,11 @@ class Solution155651 {
     public int solution(String[][] book_time) {
         int totalLength = book_time.length;
         int[][] bookTime = convertMin(book_time);
-        boolean[] check = new boolean[totalLength];
+        return findTotalCount(totalLength, bookTime);
+    }
 
+    private int findTotalCount(int totalLength, int[][] bookTime) {
+        boolean[] check = new boolean[totalLength];
         int answer = 0;
 
         while (true) {
@@ -26,6 +29,7 @@ class Solution155651 {
                 }
             }
         }
+
         return answer;
     }
 
