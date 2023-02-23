@@ -1,33 +1,41 @@
-import java.util.ArrayList;
+/**
+ * playtime = 43m 51s
+ */
+
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
-
-class Room155651 {
-    int roomNumber;
-    boolean possible;
-
-    public Room155651(int roomNumber, boolean possible) {
-        this.roomNumber = roomNumber;
-        this.possible = possible;
-    }
-}
 
 class Solution155651 {
     public int solution(String[][] book_time) {
+        int totalLength = book_time.length;
         int[][] bookTime = convertMin(book_time);
-        ArrayList<Room155651> rooms = new ArrayList<>();
-        rooms.add(new Room155651(1, false));
-        for (int i = 0; i < bookTime.length; i++) {
-            for (int j = 0; j < rooms.size(); j++) {
-                if (!rooms.get(j).possible) {
+        boolean[] check = new boolean[totalLength];
 
+        int answer = 0;
+
+        while (true) {
+            int standard = findStandard(check);
+            if (standard == -1) {
+                break;
+            }
+            answer++;
+            check[standard] = true;
+            for (int j = 0; j < totalLength; j++) {
+                if (bookTime[standard][1] + 10 <= bookTime[j][0] && !check[j]) {
+                    check[j] = true;
+                    standard = j;
                 }
             }
         }
+        return answer;
+    }
 
-
-        return 0;
+    private int findStandard(boolean[] check) {
+        for (int i = 0; i < check.length; i++) {
+            if (!check[i]) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private int[][] convertMin(String[][] book_time) {
@@ -49,12 +57,15 @@ class Solution155651 {
 public class P155651 {
     public static void main(String[] args) {
         Solution155651 sol = new Solution155651();
+//        int ans = sol.solution(new String[][]{
+//                {"15:00", "17:00"},
+//                {"16:40", "18:20"},
+//                {"14:20", "15:20"},
+//                {"14:10", "19:20"},
+//                {"18:20", "21:20"}});
         int ans = sol.solution(new String[][]{
-                {"15:00", "17:00"},
-                {"16:40", "18:20"},
-                {"14:20", "15:20"},
-                {"14:10", "19:20"},
-                {"18:20", "21:20"}});
+                {"09:10", "10:10"},
+                {"10:20", "12:20"}});
         System.out.println(ans);
     }
 }
