@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
-class Result {
+class ResultAVeryBigSum {
     public static long aVeryBigSum(List<Long> ar) {
         return ar.stream().mapToLong(i -> i).sum();
     }
@@ -30,7 +30,7 @@ public class AVeryBigSum {
                 .map(Long::parseLong)
                 .collect(toList());
 
-        long result = Result.aVeryBigSum(ar);
+        long result = ResultAVeryBigSum.aVeryBigSum(ar);
 
         bufferedWriter.write(String.valueOf(result));
         bufferedWriter.newLine();
