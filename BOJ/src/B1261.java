@@ -2,10 +2,10 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Scanner;
 
-class Pair4{
+class Pair1261 {
 	int x;
 	int y;
-	Pair4(int x, int y) {
+	Pair1261(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -31,10 +31,10 @@ public class B1261 {
 		int[][] dist = new int[n][m];
 		check[0][0] = true;
 		dist[0][0] = 0;
-		Deque<Pair4> q = new ArrayDeque<>();
-		q.add(new Pair4(0,0));
+		Deque<Pair1261> q = new ArrayDeque<>();
+		q.add(new Pair1261(0,0));
 		while(!q.isEmpty()) {
-			Pair4 p = q.remove();
+			Pair1261 p = q.remove();
 			int px = p.x;
 			int py = p.y;
 			for (int i = 0; i < 4; i++) {
@@ -44,12 +44,12 @@ public class B1261 {
 					if (check[nx][ny] == false && a[nx][ny] == 0) {
 						dist[nx][ny] = dist[px][py];
 						check[nx][ny] = true;
-						q.addFirst(new Pair4(nx,ny));
+						q.addFirst(new Pair1261(nx,ny));
 					}
 					if (check[nx][ny] == false && a[nx][ny] == 1) {
 						dist[nx][ny] = dist[px][py] + 1;
 						check[nx][ny] = true;
-						q.addLast(new Pair4(nx,ny));
+						q.addLast(new Pair1261(nx,ny));
 					}
 				}
 			}
