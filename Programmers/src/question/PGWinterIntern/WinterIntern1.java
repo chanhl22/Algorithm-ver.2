@@ -2,26 +2,21 @@ package question.PGWinterIntern;
 
 class SolutionWinterIntern1 {
     public String solution(String str) {
-        char firstChar = str.charAt(0);
+        boolean flag = false; // *을 출력한 적이 있는가?
 
         StringBuilder sb = new StringBuilder();
-        sb.append(firstChar);
-        int count = 1;
-        for (int i = 1; i < str.length(); i++) {
-            if (firstChar == str.charAt(i)) {
-                count++;
-            } else {
-                firstChar = str.charAt(i);
-                if (count > 1) {
-                    sb.append("*");
-                }
+        for (int i = 0; i < str.length(); i++) {
+            if (i == 0 || str.charAt(i) != str.charAt(i - 1)) {
                 sb.append(str.charAt(i));
-                count = 1;
+                flag = false;
+            } else {
+                if (!flag) {
+                    sb.append("*");
+                    flag = true;
+                }
             }
         }
-        if (count > 1) {
-            sb.append("*");
-        }
+
         return sb.toString();
     }
 }
@@ -29,8 +24,9 @@ class SolutionWinterIntern1 {
 public class WinterIntern1 {
     public static void main(String[] args) {
         SolutionWinterIntern1 sol = new SolutionWinterIntern1();
-//        String ans = sol.solution("aaabbcabb");
-        String ans = sol.solution("abba");
+//        String ans = sol.solution("aaabbcabb"); //a*b*cab*
+        String ans = sol.solution("aaa"); //a*
+//        String ans = sol.solution("abba"); //ab*a
         System.out.println(ans);
     }
 }
