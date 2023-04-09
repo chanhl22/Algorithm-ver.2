@@ -4,12 +4,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Pair11 {
+class Pair2206 {
     int x;
     int y;
     int z;
 
-    public Pair11(int x, int y, int z) {
+    public Pair2206(int x, int y, int z) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -30,8 +30,8 @@ public class B2206 {
     }
 
     private static int bfs() {
-        Queue<Pair11> q = new LinkedList<>();
-        q.add(new Pair11(0, 0, 0));
+        Queue<Pair2206> q = new LinkedList<>();
+        q.add(new Pair2206(0, 0, 0));
         int[][][] visited = new int[n][m][2];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
@@ -42,7 +42,7 @@ public class B2206 {
         }
         visited[0][0][0] = 1;
         while (!q.isEmpty()) {
-            Pair11 p = q.remove();
+            Pair2206 p = q.remove();
             int x = p.x;
             int y = p.y;
             int z = p.z;
@@ -51,11 +51,11 @@ public class B2206 {
                 int ny = y + dy[k];
                 if (nx >= 0 && nx < n && ny >= 0 && ny < m) {
                     if (visited[nx][ny][z] == -1 && map[nx][ny] == 0) {
-                        q.add(new Pair11(nx, ny, z));
+                        q.add(new Pair2206(nx, ny, z));
                         visited[nx][ny][z] = visited[x][y][z] + 1;
                     }
                     if (z == 0 && visited[nx][ny][z] == -1) {
-                        q.add(new Pair11(nx, ny, z + 1));
+                        q.add(new Pair2206(nx, ny, z + 1));
                         visited[nx][ny][z + 1] = visited[x][y][z] + 1;
                     }
                 }
