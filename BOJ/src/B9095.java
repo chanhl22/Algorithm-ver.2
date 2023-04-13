@@ -1,3 +1,39 @@
+/**
+ * playtime = 11:00
+ * 풀이횟수 = 3
+ */
+
+import java.util.Scanner;
+
+public class B9095 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		for (int i = 0; i < n; i++) {
+			int input = sc.nextInt();
+			System.out.println(findWay(input, 0));
+		}
+	}
+
+	private static int findWay(int input, int sum) {
+		if (sum > input) {
+			return 0;
+		}
+
+		if (sum == input) {
+			return 1;
+		}
+
+		int answer = 0;
+		for (int i = 1; i <= 3; i++) {
+			sum += i;
+			answer += findWay(input, sum);
+			sum -= i;
+		}
+		return answer;
+	}
+}
+
 //import java.util.*;
 //
 //public class B9095 {
@@ -25,29 +61,29 @@
 //	}
 //}
 
-import java.util.Scanner;
-
-public class B9095 {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int[] d = new int [11];
-		int s = sc.nextInt();
-		
-		d[0] = 1;
-		d[1] = 1;
-		d[2] = 2;
-		
-		for (int i = 0; i < s; i++) {
-			int n = sc.nextInt();
-			for (int j = 3; j <= n; j++) {
-				d[j] = d[j-1] + d[j-2] + d[j-3];
-			}
-			
-			System.out.println(d[n]);
-			
-		}
-	}
-}
+//import java.util.Scanner;
+//
+//public class B9095 {
+//	public static void main(String[] args) {
+//		Scanner sc = new Scanner(System.in);
+//		int[] d = new int [11];
+//		int s = sc.nextInt();
+//
+//		d[0] = 1;
+//		d[1] = 1;
+//		d[2] = 2;
+//
+//		for (int i = 0; i < s; i++) {
+//			int n = sc.nextInt();
+//			for (int j = 3; j <= n; j++) {
+//				d[j] = d[j-1] + d[j-2] + d[j-3];
+//			}
+//
+//			System.out.println(d[n]);
+//
+//		}
+//	}
+//}
 
 //import java.util.*;
 //
@@ -112,7 +148,6 @@ public class B9095 {
 //        }
 //    }
 //}
-
 
 //import java.util.*;
 //
