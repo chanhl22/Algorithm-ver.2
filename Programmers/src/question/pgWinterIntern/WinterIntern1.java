@@ -1,4 +1,4 @@
-package question.PGWinterIntern;
+package question.pgWinterIntern;
 
 class SolutionWinterIntern1 {
     public String solution(String str) {

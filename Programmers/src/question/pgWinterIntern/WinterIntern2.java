@@ -1,4 +1,4 @@
-package question.PGWinterIntern;
+package question.pgWinterIntern;
 
 import java.util.ArrayList;
 import java.util.List;

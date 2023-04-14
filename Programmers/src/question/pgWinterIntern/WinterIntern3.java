@@ -1,4 +1,4 @@
-package question.PGWinterIntern;
+package question.pgWinterIntern;
 
 import java.util.LinkedList;
 import java.util.Queue;
