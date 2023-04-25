@@ -1,5 +1,5 @@
 /**
- * playtime = 02:10:00
+ * playtime = 03:11:15
  */
 
 class Solution160585 {
@@ -7,92 +7,80 @@ class Solution160585 {
 
     public int solution(String[] board) {
         char[][] map = initMap(board);
-        boolean[][] isVisit = initIsVisit(map);
 
-        int sequence = 0;
-        for (int i = 0; i < LEN * LEN; i++) {
-            if (checkAllVisit(isVisit)) {
-                break;
-            }
-            if (checkWrongSequence(map, isVisit, sequence % 2 == 0 ? 'O' : 'X')) {
-                return 0;
-            }
-            sequence++;
+        int OCount = findCount(map, 'O');
+        int XCount = findCount(map, 'X');
+
+        if (!(OCount - XCount == 0 || OCount - XCount == 1)) {
+            return 0;
         }
 
-        if (hasTwoFinish(map)) {
+        boolean OWin = isWin(map, 'O');
+        boolean XWin = isWin(map, 'X');
+
+        if (OWin && XWin) {
             return 0;
+        } else if (OWin) {
+            if (OCount - XCount != 1) {
+                return 0;
+            }
+        } else if (XWin) {
+            if (OCount != XCount) {
+                return 0;
+            }
         }
         return 1;
     }
 
-    private boolean hasTwoFinish(char[][] map) {
-        boolean checkO = false;
-        boolean checkX = false;
-        boolean tempO = false;
-        boolean tempX = false;
+    private boolean isWin(char[][] map, char find) {
+        boolean resultRow = false;
+        boolean resultColumn = false;
+        boolean resultCross1 = false;
+        boolean resultCross2 = false;
         for (int i = 0; i < LEN; i++) {
-            tempO = findFinish(map, i, 'O');
-            tempX = findFinish(map, i, 'X');
-            if (tempO) {
-                checkO = true;
-            }
-            if (tempX) {
-                checkX = true;
+            if (findFinishRow(map, i, find)) {
+                resultRow = true;
+                break;
             }
         }
-        tempO = findFinishCross(map, 'O');
-        tempX = findFinishCross(map, 'X');
-        if (tempO) {
-            checkO = true;
+        for (int i = 0; i < LEN; i++) {
+            if (findFinishColumn(map, i, find)) {
+                resultColumn = true;
+                break;
+            }
         }
-        if (tempX) {
-            checkX = true;
-        }
-        if (checkO && checkX) {
-            return true;
-        }
-        return false;
+        resultCross1 = findFinishCross1(map, find);
+        resultCross2 = findFinishCross2(map, find);
+
+        return resultRow || resultColumn || resultCross1 || resultCross2;
     }
 
-    private boolean findFinishCross(char[][] map, char o) {
-        if (map[0][0] == map[1][1] && map[1][1] == map[2][2] && map[0][0] == o) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean findFinish(char[][] map, int i, char o) {
-        if (map[i][0] == map[i][1] && map[i][1] == map[i][2] && map[i][0] == o) {
-            return true;
-        }
-        if (map[0][i] == map[1][i] && map[1][i] == map[2][i] && map[0][i] == o) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean checkAllVisit(boolean[][] isVisit) {
+    private int findCount(char[][] map, char find) {
+        int count = 0;
         for (int i = 0; i < LEN; i++) {
             for (int j = 0; j < LEN; j++) {
-                if (!isVisit[i][j]) {
-                    return false;
+                if (map[i][j] == find) {
+                    count++;
                 }
             }
         }
-        return true;
+        return count;
     }
 
-    private boolean checkWrongSequence(char[][] map, boolean[][] isVisit, char findSequence) {
-        for (int i = 0; i < LEN; i++) {
-            for (int j = 0; j < LEN; j++) {
-                if (map[i][j] == findSequence && !isVisit[i][j]) {
-                    isVisit[i][j] = true;
-                    return false;
-                }
-            }
-        }
-        return true;
+    private boolean findFinishCross1(char[][] map, char find) {
+        return map[0][0] == map[1][1] && map[1][1] == map[2][2] && map[0][0] == find;
+    }
+
+    private boolean findFinishCross2(char[][] map, char find) {
+        return map[2][0] == map[1][1] && map[1][1] == map[0][2] && map[2][0] == find;
+    }
+
+    private boolean findFinishRow(char[][] map, int i, char find) {
+        return map[i][0] == map[i][1] && map[i][1] == map[i][2] && map[i][0] == find;
+    }
+
+    private boolean findFinishColumn(char[][] map, int i, char find) {
+        return map[0][i] == map[1][i] && map[1][i] == map[2][i] && map[0][i] == find;
     }
 
     private char[][] initMap(String[] board) {
@@ -101,18 +89,6 @@ class Solution160585 {
             map[i] = board[i].toCharArray();
         }
         return map;
-    }
-
-    private boolean[][] initIsVisit(char[][] map) {
-        boolean[][] check = new boolean[LEN][LEN];
-        for (int i = 0; i < LEN; i++) {
-            for (int j = 0; j < LEN; j++) {
-                if (map[i][j] == '.') {
-                    check[i][j] = true;
-                }
-            }
-        }
-        return check;
     }
 }
 
@@ -123,12 +99,9 @@ public class P160585 {
 //        ans = sol.solution(new String[]{"O.X", ".O.", "..X"});
 //        ans = sol.solution(new String[]{"OOO", "...", "XXX"});
 //        ans = sol.solution(new String[]{"OXO", "OXO", "XX."});
-        ans = sol.solution(new String[]{"OXO", "OXX", "OOX"});
-        /**
-         * oxo
-         * oxx
-         * oox
-         */
+//        ans = sol.solution(new String[]{"OXO", "OXX", "OOX"});
+//        ans = sol.solution(new String[]{"OOO", "OXX", "OXX"}); //0
+        ans = sol.solution(new String[]{"OXO", "X.X", "XOX"});
         System.out.println(ans);
     }
 }
