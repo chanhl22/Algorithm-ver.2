@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-class Pair33 {
+class Pair10655 {
     int x;
     int y;
 
-    public Pair33(int x, int y) {
+    public Pair10655(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -14,11 +14,11 @@ public class B10655 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
-        Pair33[] a = new Pair33[t];
+        Pair10655[] a = new Pair10655[t];
         for (int i = 0; i < t; i++) {
             int input_x = sc.nextInt();
             int input_y = sc.nextInt();
-            a[i] = new Pair33(input_x, input_y);
+            a[i] = new Pair10655(input_x, input_y);
         }
         int[] dist = new int[t];
         int all = 0;
