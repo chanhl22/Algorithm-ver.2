@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Edge {
+class Edge13023 {
 	int from, to;
-	Edge(int from, int to) {
+	Edge13023(int from, int to) {
 		this.from = from;
 		this.to = to;
 	}
@@ -17,7 +17,7 @@ public class B13023 {
 		int m = sc.nextInt();
 		boolean[][] a = new boolean[n][n];  //�������
 		ArrayList<Integer>[] g = new ArrayList[n];  //��������Ʈ
-		ArrayList<Edge> edges = new ArrayList<Edge>();  //��������Ʈ
+		ArrayList<Edge13023> edges = new ArrayList<Edge13023>();  //��������Ʈ
 		for (int i = 0; i < n; i++) {
 			g[i] = new ArrayList<Integer>();
 		}
@@ -25,8 +25,8 @@ public class B13023 {
 		for (int i = 0; i < m; i++) {
 			int from = sc.nextInt();
 			int to = sc.nextInt();
-			edges.add(new Edge(from, to));
-			edges.add(new Edge(to, from));
+			edges.add(new Edge13023(from, to));
+			edges.add(new Edge13023(to, from));
 			a[from][to] = true;
 			a[to][from] = true;
 			g[from].add(to);
