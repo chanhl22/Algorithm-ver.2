@@ -2,10 +2,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Pair3{
+class Pair7562 {
 	int x;
 	int y;
-	Pair3(int x, int y) {
+	Pair7562(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -22,16 +22,16 @@ public class B7562 {
 		while(t-- > 0) {
 			int l = sc.nextInt();
 			int[][] a = new int[l][l];
-			Queue<Pair3> q = new LinkedList<Pair3>();
+			Queue<Pair7562> q = new LinkedList<Pair7562>();
 			int x = sc.nextInt();
 			int y = sc.nextInt();
 			int res_x = sc.nextInt();
 			int res_y = sc.nextInt();
-			q.add(new Pair3(x,y));
+			q.add(new Pair7562(x,y));
 			int[][] dist = new int[l][l];
 			dist[x][y] = 1;
 			while (!q.isEmpty()) {
-				Pair3 p = q.remove();
+				Pair7562 p = q.remove();
 				int px = p.x;
 				int py = p.y;
 				for (int i = 0; i < 8; i++) {
@@ -40,7 +40,7 @@ public class B7562 {
 					if (nx < l && nx >= 0 && ny < l && ny >= 0) {
 						if (dist[nx][ny] == 0) {
 							dist[nx][ny] = dist[px][py] + 1;
-							q.add(new Pair3(nx,ny));							
+							q.add(new Pair7562(nx,ny));
 						}
 					}
 				}
