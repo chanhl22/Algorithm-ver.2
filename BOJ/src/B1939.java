@@ -5,11 +5,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Weight {
+class Weight1939 {
     int end;
     int weight;
 
-    public Weight(int end, int weight) {
+    public Weight1939(int end, int weight) {
         this.end = end;
         this.weight = weight;
     }
@@ -18,7 +18,7 @@ class Weight {
 public class B1939 {
     static int n;
     static int m;
-    static ArrayList<Weight>[] list;
+    static ArrayList<Weight1939>[] list;
     static int s;
     static int e;
 
@@ -38,8 +38,8 @@ public class B1939 {
             if (max < dist) {
                 max = dist;
             }
-            list[x].add(new Weight(y, dist));
-            list[y].add(new Weight(x, dist));
+            list[x].add(new Weight1939(y, dist));
+            list[y].add(new Weight1939(x, dist));
         }
         s = sc.nextInt();
         e = sc.nextInt();
@@ -58,19 +58,19 @@ public class B1939 {
     }
 
     private static boolean bfs(int mid) {
-        Queue<Weight> q = new LinkedList<>();
-        q.add(new Weight(s, mid));
+        Queue<Weight1939> q = new LinkedList<>();
+        q.add(new Weight1939(s, mid));
         boolean[] visited = new boolean[n + 1];
         visited[s] = true;
         while (!q.isEmpty()) {
-            Weight p = q.remove();
+            Weight1939 p = q.remove();
             int now = p.end;
             int now_weight = p.weight;
-            for (Weight weight : list[now]) {
+            for (Weight1939 weight : list[now]) {
                 int next = weight.end;
                 int next_weight = weight.weight;
                 if (now_weight <= next_weight && visited[next] == false) {
-                    q.add(new Weight(next, mid));
+                    q.add(new Weight1939(next, mid));
                     visited[next] = true;
                 }
             }
