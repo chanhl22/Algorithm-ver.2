@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-class Newcomer {
+class Newcomer1946 {
     int x; //서류
     int y; //면접
 
-    public Newcomer(int x, int y) {
+    public Newcomer1946(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -21,12 +21,12 @@ public class B1946 {
         int t = Integer.parseInt(bf.readLine());
         while (t-- > 0) {
             int n = Integer.parseInt(bf.readLine());
-            Newcomer[] a = new Newcomer[n];
+            Newcomer1946[] a = new Newcomer1946[n];
             for (int i = 0; i < n; i++) {
                 String[] st = bf.readLine().split(" ");
                 int t1 = Integer.parseInt(st[0]);
                 int t2 = Integer.parseInt(st[1]);
-                a[i] = new Newcomer(t1, t2);
+                a[i] = new Newcomer1946(t1, t2);
             }
             Arrays.sort(a, (o1, o2) -> o1.x - o2.x);
             int ans = 1;
