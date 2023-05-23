@@ -15,7 +15,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-class Point implements Comparable<Point>{
+class Point implements Comparable<Point> {
     int x;
     int y;
 
@@ -50,7 +50,7 @@ public class B2658 {
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
                     if (map[i][j] == 1) {
-                        p[0] = new Point(i ,j);
+                        p[0] = new Point(i, j);
                         ok = true;
                         break;
                     }
@@ -69,16 +69,16 @@ public class B2658 {
                 }
             }
             if (max == p[0].y) {
-                p[2] = new Point(p[0].x + c/2, p[0].y - r);
+                p[2] = new Point(p[0].x + c / 2, p[0].y - r);
             } else {
-                p[2] = new Point(p[0].x + c/2, p[0].y + r);
+                p[2] = new Point(p[0].x + c / 2, p[0].y + r);
             }
         } else { //직선은 가로
             boolean ok = false;
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
                     if (map[j][i] == 1) {
-                        p[0] = new Point(j ,i);
+                        p[0] = new Point(j, i);
                         ok = true;
                         break;
                     }
@@ -97,9 +97,9 @@ public class B2658 {
                 }
             }
             if (max == p[0].x) {
-                p[2] = new Point(p[0].x - c, p[0].y + r/2);
+                p[2] = new Point(p[0].x - c, p[0].y + r / 2);
             } else {
-                p[2] = new Point(p[0].x + c, p[0].y + r/2);
+                p[2] = new Point(p[0].x + c, p[0].y + r / 2);
             }
         }
         Arrays.sort(p);
@@ -135,7 +135,7 @@ public class B2658 {
                 if (r < temp1) {
                     r = temp1;
                 }
-                if (ok1 == true && map[i][j] == 0){
+                if (ok1 == true && map[i][j] == 0) {
                     ok1 = false;
                     temp1 = 0;
                 }
@@ -148,7 +148,7 @@ public class B2658 {
                 if (c < temp2) {
                     c = temp2;
                 }
-                if (ok2 == true && map[j][i] == 0){
+                if (ok2 == true && map[j][i] == 0) {
                     ok2 = false;
                     temp2 = 0;
                 }
@@ -163,7 +163,7 @@ public class B2658 {
             }
         }
         int temp_cnt = 0;
-        for (int i = Math.max(r,c); i > 0; i-=2) {
+        for (int i = Math.max(r, c); i > 0; i -= 2) {
             temp_cnt += i;
         }
         r -= 1;
@@ -172,7 +172,7 @@ public class B2658 {
             System.out.println(0);
         } else if (r == 0 || c == 0) {
             System.out.println(0);
-        }else if (r * 2 == c || c * 2 == r) {
+        } else if (r * 2 == c || c * 2 == r) {
             find(map, r, c);
         } else {
             System.out.println(0);
