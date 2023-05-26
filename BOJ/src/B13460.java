@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
-class Result {
+class Result13460 {
     boolean moved, hole;
     int x, y;
-    Result(boolean moved, boolean hole, int x, int y) {
+    Result13460(boolean moved, boolean hole, int x, int y) {
         this.moved = moved;
         this.hole = hole;
         this.x = x;
@@ -23,22 +23,22 @@ public class B13460 {
         }
         return dir;
     }
-    static Result simulate(char[][] a, int k, int x, int y) {
+    static Result13460 simulate(char[][] a, int k, int x, int y) {
         int n = a.length;
         int m = a[0].length;
-        if (a[x][y] == '.') return new Result(false, false, x, y);
+        if (a[x][y] == '.') return new Result13460(false, false, x, y);
         boolean moved = false;
         while (true) {
             int nx = x+dx[k];
             int ny = y+dy[k];
             if (nx < 0 || nx >= n || ny < 0 || ny >= m) {
-                return new Result(moved, false, x, y);
+                return new Result13460(moved, false, x, y);
             }
             char ch = a[nx][ny];
             if (ch == '#') {
-                return new Result(moved, false, x, y);
+                return new Result13460(moved, false, x, y);
             } else if (ch == 'R' || ch == 'B') {
-                return new Result(moved, false, x, y);
+                return new Result13460(moved, false, x, y);
             } else if (ch == '.') {
                 char temp = a[nx][ny];
                 a[nx][ny] = a[x][y];
@@ -49,7 +49,7 @@ public class B13460 {
             } else if (ch == 'O') {
                 a[x][y] = '.';
                 moved = true;
-                return new Result(moved, true, x, y);
+                return new Result13460(moved, true, x, y);
             }
         }
     }
@@ -75,9 +75,9 @@ public class B13460 {
             cnt += 1;
             boolean hole1 = false, hole2 = false;
             while (true) {
-                Result p1 = simulate(a, k, rx, ry);
+                Result13460 p1 = simulate(a, k, rx, ry);
                 rx = p1.x; ry = p1.y;
-                Result p2 = simulate(a, k, bx, by);
+                Result13460 p2 = simulate(a, k, bx, by);
                 bx = p2.x; by = p2.y;
                 if (p1.moved == false && p2.moved == false) {
                     break;
