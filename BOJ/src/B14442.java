@@ -2,12 +2,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Pair12 {
+class Pair14442 {
     int x;
     int y;
     int z;
 
-    Pair12(int x, int y, int z) {
+    Pair14442(int x, int y, int z) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -37,10 +37,10 @@ public class B14442 {
         int[][][] b = new int[n][m][k+1];
         b[0][0][0] = 1;
         //bfs
-        Queue<Pair12> q = new LinkedList<>();
-        q.add(new Pair12(0, 0, 0));
+        Queue<Pair14442> q = new LinkedList<>();
+        q.add(new Pair14442(0, 0, 0));
         while (!q.isEmpty()) {
-            Pair12 p = q.remove();
+            Pair14442 p = q.remove();
             int x = p.x;
             int y = p.y;
             int z = p.z;
@@ -49,11 +49,11 @@ public class B14442 {
                 int ny = y + dy[i];
                 if (nx >= 0 && nx < n && ny >= 0 && ny < m) {
                     if (a[nx][ny] == 0 && b[nx][ny][z] == 0){
-                        q.add(new Pair12(nx,ny,z));
+                        q.add(new Pair14442(nx,ny,z));
                         b[nx][ny][z] = b[x][y][z] + 1;
                     }
                     if(z+1 <= k && a[nx][ny] == 1 && b[nx][ny][z+1] == 0) {
-                        q.add(new Pair12(nx,ny,z+1));
+                        q.add(new Pair14442(nx,ny,z+1));
                         b[nx][ny][z+1] = b[x][y][z] + 1;
                     }
                 }
