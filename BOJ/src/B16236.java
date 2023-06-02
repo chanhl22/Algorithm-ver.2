@@ -3,12 +3,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Pair14 {
+class Pair16236 {
     int dist;
     int x;
     int y;
 
-    Pair14(int dist, int x, int y) {
+    Pair16236(int dist, int x, int y) {
         this.dist = dist;
         this.x = x;
         this.y = y;
@@ -20,8 +20,8 @@ public class B16236 {
     static int[] dx = {0, 0, -1, 1};
     static int[] dy = {-1, 1, 0, 0};
 
-    static Pair14 bfs(int sx, int sy, int size, int[][] a) {
-        ArrayList<Pair14> ans = new ArrayList<>(); //To include all possible spaces
+    static Pair16236 bfs(int sx, int sy, int size, int[][] a) {
+        ArrayList<Pair16236> ans = new ArrayList<>(); //To include all possible spaces
         int[][] d = new int[n][n]; //bfs dist
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -58,7 +58,7 @@ public class B16236 {
                             d[nx][ny] = d[x][y] + 1;
                             //If shark can eat, add to ans arraylist
                             if (eat) {
-                                ans.add(new Pair14(d[nx][ny], nx, ny));
+                                ans.add(new Pair16236(d[nx][ny], nx, ny));
                             }
                         }
                     }
@@ -70,8 +70,8 @@ public class B16236 {
             return null;
         }
         //Decide where to visit first
-        Pair14 best = ans.get(0);
-        for (Pair14 p : ans) {
+        Pair16236 best = ans.get(0);
+        for (Pair16236 p : ans) {
             if (best.dist > p.dist) {
                 best = p;
             } else if (best.dist == p.dist && best.x > p.x) {
@@ -103,7 +103,7 @@ public class B16236 {
         int size = 2; // shark size
         int exp = 0; // Required to level up sharks
         while (true) {
-            Pair14 p = bfs(x, y, size, a);
+            Pair16236 p = bfs(x, y, size, a);
             if (p == null) break;
             a[p.x][p.y] = 0;
             ans += p.dist;
