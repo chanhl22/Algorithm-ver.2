@@ -2,13 +2,13 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Pair13 {
+class Pair16933 {
     int x;
     int y;
     int z;
     int night;
 
-    Pair13(int x, int y, int z, int night) {
+    Pair16933(int x, int y, int z, int night) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -39,10 +39,10 @@ public class B16933 {
         int[][][][] b = new int[n][m][k + 1][2];
         b[0][0][0][0] = 1;
         //bfs
-        Queue<Pair13> q = new LinkedList<>();
-        q.offer(new Pair13(0, 0, 0, 0));
+        Queue<Pair16933> q = new LinkedList<>();
+        q.offer(new Pair16933(0, 0, 0, 0));
         while (!q.isEmpty()) {
-            Pair13 p = q.remove();
+            Pair16933 p = q.remove();
             int x = p.x;
             int y = p.y;
             int z = p.z;
@@ -52,18 +52,18 @@ public class B16933 {
                 int ny = y + dy[i];
                 if (nx >= 0 && nx < n && ny >= 0 && ny < m) {
                     if (a[nx][ny] == 0 && b[nx][ny][z][1 - night] == 0) {
-                        q.offer(new Pair13(nx, ny, z, 1 - night));
+                        q.offer(new Pair16933(nx, ny, z, 1 - night));
                         b[nx][ny][z][1 - night] = b[x][y][z][night] + 1;
                     }
                     if (night == 0 && z + 1 <= k && a[nx][ny] == 1 && b[nx][ny][z + 1][1 - night] == 0) {
-                        q.offer(new Pair13(nx, ny, z + 1, 1 - night));
+                        q.offer(new Pair16933(nx, ny, z + 1, 1 - night));
                         b[nx][ny][z + 1][1 - night] = b[x][y][z][night] + 1;
                     }
                 }
             }
             if (b[x][y][z][1 - night] == 0) {
                 b[x][y][z][1 - night] = b[x][y][z][night] + 1;
-                q.offer(new Pair13(x, y, z, 1 - night));
+                q.offer(new Pair16933(x, y, z, 1 - night));
             }
         }
         //print
