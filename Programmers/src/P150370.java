@@ -42,12 +42,7 @@ class Solution150370 {
             }
         }
 
-        int[] answer = new int[result.size()];
-        for (int i = 0; i < result.size(); i++) {
-            answer[i] = result.get(i);
-        }
-
-        return answer;
+        return result.stream().mapToInt(i -> i).toArray();
     }
 
     private HashMap<String, Integer> convertTerm(String[] inputTerms) {
