@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-class Term {
+class Term16637 {
     int num, op;
-    Term(int num, int op) {
+    Term16637(int num, int op) {
         this.num = num;
         this.op = op;
     }
@@ -13,10 +13,10 @@ public class B16637 {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         String s = sc.next();
-        Term[] a = new Term[n];
+        Term16637[] a = new Term16637[n];
         for (int i=0; i<n; i++) {
             if (i%2 == 0) {
-                a[i] = new Term(s.charAt(i)-'0', 0);
+                a[i] = new Term16637(s.charAt(i)-'0', 0);
             } else {
                 int op = 1;
                 if (s.charAt(i) == '-') {
@@ -24,7 +24,7 @@ public class B16637 {
                 } else if (s.charAt(i) == '*') {
                     op = 3;
                 }
-                a[i] = new Term(0, op);
+                a[i] = new Term16637(0, op);
             }
         }
         int m = (n-1)/2;
@@ -37,9 +37,9 @@ public class B16637 {
                 }
             }
             if (!ok) continue;
-            Term[] b = new Term[n];
+            Term16637[] b = new Term16637[n];
             for (int j=0; j<n; j++) {
-                b[j] = new Term(a[j].num, a[j].op);
+                b[j] = new Term16637(a[j].num, a[j].op);
             }
             for (int j=0; j<m; j++) {
                 if ((i&(1<<j)) > 0) {
