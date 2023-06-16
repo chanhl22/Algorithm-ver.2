@@ -3,11 +3,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Pair16 {
+class Pair4991 {
     int first;
     int second;
 
-    public Pair16(int first, int second) {
+    public Pair4991(int first, int second) {
         this.first = first;
         this.second = second;
     }
@@ -91,15 +91,15 @@ public class B4991 {
             //* : dirty space
             //x : furniture
             //o : robot
-            ArrayList<Pair16> b = new ArrayList<>(); // * position
-            b.add(new Pair16(0,0));
+            ArrayList<Pair4991> b = new ArrayList<>(); // * position
+            b.add(new Pair4991(0,0));
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < m; j++) {
                     if (a[i].charAt(j) == 'o') {
-                        b.set(0, new Pair16(i, j));
+                        b.set(0, new Pair4991(i, j));
                     }
                     if (a[i].charAt(j) == '*') {
-                        b.add(new Pair16(i, j));
+                        b.add(new Pair4991(i, j));
                     }
                 }
             }
