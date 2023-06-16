@@ -2,12 +2,12 @@
 
 import java.util.Scanner;
 
-class Tunnel {
+class Tunnel5612 {
     int index;
     int s;
     int e;
 
-    public Tunnel(int index, int s, int e) {
+    public Tunnel5612(int index, int s, int e) {
         this.index = index;
         this.s = s;
         this.e = e;
@@ -19,11 +19,11 @@ public class B5612 {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int count = sc.nextInt();
-        Tunnel[] t = new Tunnel[n];
+        Tunnel5612[] t = new Tunnel5612[n];
         for (int i = 0; i < n; i++) {
             int s = sc.nextInt();
             int e = sc.nextInt();
-            t[i] = new Tunnel(i, s, e);
+            t[i] = new Tunnel5612(i, s, e);
         }
         int max = count;
         for (int i = 0; i < n; i++) {
