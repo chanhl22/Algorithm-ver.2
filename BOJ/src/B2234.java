@@ -2,10 +2,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Pair30 {
+class Pair2234 {
     int x;
     int y;
-    Pair30(int x, int y) {
+    Pair2234(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -20,12 +20,12 @@ public class B2234 {
     static int[] dx = {0,-1,0,1};
     static int[] dy = {-1,0,1,0};
     static int bfs(int sx, int sy, int rooms) {
-        Queue<Pair30> q = new LinkedList<Pair30>();
-        q.add(new Pair30(sx, sy));
+        Queue<Pair2234> q = new LinkedList<Pair2234>();
+        q.add(new Pair2234(sx, sy));
         d[sx][sy] = rooms;
         int cnt = 0;
         while (!q.isEmpty()) {
-            Pair30 p = q.remove();
+            Pair2234 p = q.remove();
             int x = p.x;
             int y = p.y;
             cnt += 1;
@@ -35,7 +35,7 @@ public class B2234 {
                 if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
                 if (d[nx][ny] != 0) continue;
                 if ((a[x][y] & (1<<k)) > 0) continue;
-                q.add(new Pair30(nx, ny));
+                q.add(new Pair2234(nx, ny));
                 d[nx][ny] = rooms;
             }
         }
