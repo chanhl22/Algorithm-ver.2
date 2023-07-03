@@ -1,3 +1,90 @@
+/**
+ * playtime = 44:31
+ * 풀이횟수 = 2
+ */
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Stack;
+
+class Position {
+    int x;
+    int y;
+
+    public Position(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+}
+
+public class B15686 {
+
+    private static int m;
+    private static final ArrayList<Position> house = new ArrayList<>();
+    private static final ArrayList<Position> store = new ArrayList<>();
+    private static final Stack<Position> select = new Stack<>();
+    private static int answer = -1;
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        m = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int input = sc.nextInt();
+                if (input == 1) {
+                    house.add(new Position(i, j));
+                } else if (input == 2) {
+                    store.add(new Position(i, j));
+                }
+            }
+        }
+
+        go(0, 0);
+
+        System.out.println(answer);
+    }
+
+    private static void go(int index, int pick) {
+        if (pick == m) {
+            int dist = 0;
+            for (Position house : house) {
+                int minDist = Integer.MAX_VALUE;
+                for (Position select : select) {
+                    minDist = Math.min(minDist, calculateDist(select, house));
+                }
+                dist += minDist;
+            }
+            if (answer == -1 || answer > dist) {
+                answer = dist;
+            }
+        }
+
+        if (index == store.size()) {
+            return;
+        }
+
+        select.push(store.get(index));
+        go(index + 1, pick + 1);
+        select.pop();
+        go(index + 1, pick);
+    }
+
+    private static int calculateDist(Position select, Position house) {
+        return Math.abs(select.getX() - house.getX()) + Math.abs(select.getY() - house.getY());
+    }
+}
+
+/* Standard solution
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
@@ -71,93 +158,95 @@ public class B15686 {
         System.out.println(ans);
     }
 }
+*/
 
+/* Add Solution by permutation
 
-//Add Solution by permutation
-//import java.util.*;
-//class Pair {
-//    int first;
-//    int second;
-//    Pair(int first, int second) {
-//        this.first = first;
-//        this.second = second;
-//    }
-//}
-//public class Main {
-//    static boolean next_permutation(int[] a) {
-//        int i = a.length-1;
-//        while (i > 0 && a[i-1] >= a[i]) {
-//            i -= 1;
-//        }
-//
-//        if (i <= 0) {
-//            return false;
-//        }
-//
-//        int j = a.length-1;
-//        while (a[j] <= a[i-1]) {
-//            j -= 1;
-//        }
-//
-//        int temp = a[i-1];
-//        a[i-1] = a[j];
-//        a[j] = temp;
-//
-//        j = a.length-1;
-//        while (i < j) {
-//            temp = a[i];
-//            a[i] = a[j];
-//            a[j] = temp;
-//            i += 1;
-//            j -= 1;
-//        }
-//        return true;
-//    }
-//    public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        int n = sc.nextInt();
-//        int m = sc.nextInt();
-//        int[][] a = new int[n][n];
-//        ArrayList<Pair> people = new ArrayList<>();
-//        ArrayList<Pair> store = new ArrayList<>();
-//        for (int i=0; i<n; i++) {
-//            for (int j=0; j<n; j++) {
-//                a[i][j] = sc.nextInt();
-//                if (a[i][j] == 1) {
-//                    people.add(new Pair(i,j));
-//                } else if (a[i][j] == 2) {
-//                    store.add(new Pair(i,j));
-//                }
-//            }
-//        }
-//        int[] d = new int[store.size()];
-//        for (int i=0; i<m; i++) {
-//            d[i] = 1;
-//        }
-//        Arrays.sort(d);
-//        int ans = -1;
-//        do {
-//            int sum = 0;
-//            for (Pair p : people) {
-//                int min = -1;
-//                for (int i=0; i<store.size(); i++) {
-//                    if (d[i] == 0) continue;
-//                    Pair s = store.get(i);
-//                    int d1 = p.first-s.first;
-//                    int d2 = p.second-s.second;
-//                    if (d1 < 0) d1 = -d1;
-//                    if (d2 < 0) d2 = -d2;
-//                    int dist = d1+d2;
-//                    if (min == -1 || min > dist) {
-//                        min = dist;
-//                    }
-//                }
-//                sum += min;
-//            }
-//            if (ans == -1 || ans > sum) {
-//                ans = sum;
-//            }
-//        } while (next_permutation(d));
-//        System.out.println(ans);
-//    }
-//}
+import java.util.*;
+class Pair {
+    int first;
+    int second;
+    Pair(int first, int second) {
+        this.first = first;
+        this.second = second;
+    }
+}
+public class Main {
+    static boolean next_permutation(int[] a) {
+        int i = a.length-1;
+        while (i > 0 && a[i-1] >= a[i]) {
+            i -= 1;
+        }
+
+        if (i <= 0) {
+            return false;
+        }
+
+        int j = a.length-1;
+        while (a[j] <= a[i-1]) {
+            j -= 1;
+        }
+
+        int temp = a[i-1];
+        a[i-1] = a[j];
+        a[j] = temp;
+
+        j = a.length-1;
+        while (i < j) {
+            temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+            i += 1;
+            j -= 1;
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] a = new int[n][n];
+        ArrayList<Pair> people = new ArrayList<>();
+        ArrayList<Pair> store = new ArrayList<>();
+        for (int i=0; i<n; i++) {
+            for (int j=0; j<n; j++) {
+                a[i][j] = sc.nextInt();
+                if (a[i][j] == 1) {
+                    people.add(new Pair(i,j));
+                } else if (a[i][j] == 2) {
+                    store.add(new Pair(i,j));
+                }
+            }
+        }
+        int[] d = new int[store.size()];
+        for (int i=0; i<m; i++) {
+            d[i] = 1;
+        }
+        Arrays.sort(d);
+        int ans = -1;
+        do {
+            int sum = 0;
+            for (Pair p : people) {
+                int min = -1;
+                for (int i=0; i<store.size(); i++) {
+                    if (d[i] == 0) continue;
+                    Pair s = store.get(i);
+                    int d1 = p.first-s.first;
+                    int d2 = p.second-s.second;
+                    if (d1 < 0) d1 = -d1;
+                    if (d2 < 0) d2 = -d2;
+                    int dist = d1+d2;
+                    if (min == -1 || min > dist) {
+                        min = dist;
+                    }
+                }
+                sum += min;
+            }
+            if (ans == -1 || ans > sum) {
+                ans = sum;
+            }
+        } while (next_permutation(d));
+        System.out.println(ans);
+    }
+}
+*/
