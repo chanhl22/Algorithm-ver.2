@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
-class Position {
+class Position15686 {
     int x;
     int y;
 
-    public Position(int x, int y) {
+    public Position15686(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -28,9 +28,9 @@ class Position {
 public class B15686 {
 
     private static int m;
-    private static final ArrayList<Position> house = new ArrayList<>();
-    private static final ArrayList<Position> store = new ArrayList<>();
-    private static final Stack<Position> select = new Stack<>();
+    private static final ArrayList<Position15686> house = new ArrayList<>();
+    private static final ArrayList<Position15686> store = new ArrayList<>();
+    private static final Stack<Position15686> select = new Stack<>();
     private static int answer = -1;
 
     public static void main(String[] args) {
@@ -41,9 +41,9 @@ public class B15686 {
             for (int j = 0; j < n; j++) {
                 int input = sc.nextInt();
                 if (input == 1) {
-                    house.add(new Position(i, j));
+                    house.add(new Position15686(i, j));
                 } else if (input == 2) {
-                    store.add(new Position(i, j));
+                    store.add(new Position15686(i, j));
                 }
             }
         }
@@ -56,9 +56,9 @@ public class B15686 {
     private static void go(int index, int pick) {
         if (pick == m) {
             int dist = 0;
-            for (Position house : house) {
+            for (Position15686 house : house) {
                 int minDist = Integer.MAX_VALUE;
-                for (Position select : select) {
+                for (Position15686 select : select) {
                     minDist = Math.min(minDist, calculateDist(select, house));
                 }
                 dist += minDist;
@@ -78,7 +78,7 @@ public class B15686 {
         go(index + 1, pick);
     }
 
-    private static int calculateDist(Position select, Position house) {
+    private static int calculateDist(Position15686 select, Position15686 house) {
         return Math.abs(select.getX() - house.getX()) + Math.abs(select.getY() - house.getY());
     }
 }
