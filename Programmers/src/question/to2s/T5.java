@@ -1,25 +1,36 @@
 package question.to2s;
 
-class Solution15 {
-    static void go (int index, int sum) {
-//        if (index == k) {
-//
-//        }
-    }
+import java.util.Arrays;
+import java.util.HashSet;
+
+class SolutionT5 {
+
+    private static final HashSet<Integer> answer = new HashSet<>();
 
     public int[] solution(int[] fruitWeights, int k) {
-        int[] answer = {};
-        go (0,0);
-        return answer;
+        go(0, 0, 0, fruitWeights, k);
+
+        return answer.stream().mapToInt(i -> i).toArray();
+    }
+
+    private void go(int index, int start, int result, int[] fruitWeights, int k) {
+        if (index == k) {
+            answer.add(result);
+            return;
+        }
+
+        for (int i = start; i < fruitWeights.length; i++) {
+            go(index + 1, i + 1, Math.max(result, fruitWeights[i]), fruitWeights, k);
+        }
     }
 }
 
 
 public class T5 {
     public static void main(String[] args) {
-        Solution15 sol = new Solution15();
-        int[] ans = {};
-        ans = sol.solution(new int[]{30, 40, 10, 20, 30}, 3);
-        System.out.println(ans);
+        SolutionT5 sol = new SolutionT5();
+        int[] ans = sol.solution(new int[]{30, 40, 10, 20, 30}, 3);
+//        int[] ans = sol.solution(new int[]{30, 40, 10}, 2);
+        System.out.println(Arrays.toString(ans));
     }
 }
