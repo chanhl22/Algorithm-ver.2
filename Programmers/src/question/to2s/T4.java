@@ -1,4 +1,4 @@
-package question;
+package question.to2s;
 
 class Solution13 {
     public String solution(String input) {

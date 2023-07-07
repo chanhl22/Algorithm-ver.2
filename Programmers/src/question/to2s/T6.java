@@ -1,4 +1,4 @@
-package question;
+package question.to2s;
 
 class Solution16 {
     public long solution(int numOfStairs) {

@@ -1,4 +1,4 @@
-package question;
+package question.to2s;
 
 class Solution10 {
     public long solution(long orderAmount, long taxFreeAmount, long serviceFee) {

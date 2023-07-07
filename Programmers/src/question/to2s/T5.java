@@ -1,4 +1,4 @@
-package question;
+package question.to2s;
 
 class Solution15 {
     static void go (int index, int sum) {

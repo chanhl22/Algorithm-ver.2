@@ -1,4 +1,4 @@
-package question;
+package question.to2s;
 
 class Solution12 {
     public boolean solution(String amountText) {
