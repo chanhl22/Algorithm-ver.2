@@ -22,6 +22,14 @@ class SolutionT12023 {
                         break;
                     }
                 }
+                /**
+                 * 같을 때 빼냐, 같을 때 안빼냐
+                 * 같을 때 빼면 2번이 실패
+                 * 같을 때 안 빼면 2번이 성공
+                 */
+//                while (!q.isEmpty() && q.peek() == num) {
+//                    check[q.remove()] = false;
+//                }
                 q.add(num);
                 check[num] = true;
             } else {
@@ -52,7 +60,10 @@ public class T12023 {
 //        ans = sol.solution("1321313", 3);
 //        ans = sol.solution("1323313", 3);
 //        ans = sol.solution("12412415", 4);
-        ans = sol.solution("51234", 5);
+//        ans = sol.solution("123123", 3);
+//        ans = sol.solution("321321", 3);
+//        ans = sol.solution("13232", 3);
+        ans = sol.solution("111221", 2);
         System.out.println(ans);
     }
 }
