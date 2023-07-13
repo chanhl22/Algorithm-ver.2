@@ -21,7 +21,7 @@ public class B3955 {
             A = sc.nextInt();
             B = sc.nextInt();
 
-            EGResult result = extendedGcd(A, B);
+            EGResult3955 result = extendedGcd(A, B);
 //          System.out.println(result);
             // D = gcd(A,B)
             // Ax + By = C 일때 C % D == 0 이어야 해를 가질 수 있음 : 베주 항등식
@@ -59,7 +59,7 @@ public class B3955 {
         }
     }
 
-    public static EGResult extendedGcd(long a, long b) {
+    public static EGResult3955 extendedGcd(long a, long b) {
         long s0 = 1, t0 = 0, r0 = a;
         long s1 = 0, t1 = 1, r1 = b;
 
@@ -79,16 +79,16 @@ public class B3955 {
             t0 = t1;
             t1 = temp;
         }
-        return new EGResult(s0, t0, r0);
+        return new EGResult3955(s0, t0, r0);
     }
 }
 
-class EGResult {
+class EGResult3955 {
     long s;
     long t;
     long r;
 
-    public EGResult(long s, long t, long r) {
+    public EGResult3955(long s, long t, long r) {
         super();
         this.s = s;
         this.t = t;
