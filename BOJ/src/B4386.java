@@ -16,12 +16,12 @@ class Pair4386 {
     }
 }
 
-class Edge2 {
+class Edge4386 {
     int start;
     int end;
     double dist;
 
-    public Edge2(int start, int end, double dist) {
+    public Edge4386(int start, int end, double dist) {
         this.start = start;
         this.end = end;
         this.dist = dist;
@@ -43,11 +43,11 @@ public class B4386 {
         }
 
         //노드와 간선 정보
-        ArrayList<Edge2> set = new ArrayList<>();
+        ArrayList<Edge4386> set = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 double dist = distance(points[i], points[j]);
-                set.add(new Edge2(points[i].num, points[j].num, dist));
+                set.add(new Edge4386(points[i].num, points[j].num, dist));
             }
         }
         Collections.sort(set, (o1, o2) -> (int)(o1.dist - o2.dist));
