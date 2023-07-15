@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-class Pair38 {
+class Pair4386 {
     int num;
     double x;
     double y;
 
-    public Pair38(int num, double x, double y) {
+    public Pair4386(int num, double x, double y) {
         this.num = num;
         this.x = x;
         this.y = y;
@@ -34,12 +34,12 @@ public class B4386 {
         int n = sc.nextInt();
 
         //입력 받은 x,y 좌표를 정점으로
-        Pair38[] points = new Pair38[n];
+        Pair4386[] points = new Pair4386[n];
         for (int i = 0; i < n; i++) {
             int num = i;
             double x = sc.nextDouble();
             double y = sc.nextDouble();
-            points[i] = new Pair38(i, x, y);
+            points[i] = new Pair4386(i, x, y);
         }
 
         //노드와 간선 정보
@@ -96,7 +96,7 @@ public class B4386 {
         return parent[x] = getParent(parent, parent[x]);
     }
 
-    private static double distance(Pair38 a, Pair38 b) {
+    private static double distance(Pair4386 a, Pair4386 b) {
         return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
     }
 }
