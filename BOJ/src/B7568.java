@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-class Student{
+class Student7568 {
     int w;
     int h;
 
-    public Student(int w, int h) {
+    public Student7568(int w, int h) {
         this.w = w;
         this.h = h;
     }
@@ -14,11 +14,11 @@ public class B7568 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        Student[] s = new Student[n];
+        Student7568[] s = new Student7568[n];
         for (int i = 0; i < n; i++) {
             int x = sc.nextInt();
             int y= sc.nextInt();
-            s[i] = new Student(x,y);
+            s[i] = new Student7568(x,y);
         }
         int[] rank = new int[n];
         for (int i = 0; i < n; i++) {
