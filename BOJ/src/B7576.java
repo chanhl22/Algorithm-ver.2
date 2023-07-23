@@ -2,10 +2,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Pair2{
+class Pair7576 {
 	int x;
 	int y;
-	Pair2(int x, int y) {
+	Pair7576(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -15,9 +15,9 @@ public class B7576 {
 	static int[] dx = {0,0,-1,1};
 	static int[] dy = {-1,1,0,0};
 	
-	static void bfs(int[][] a, int[][] dist, int n, int m, Queue<Pair2> q) {
+	static void bfs(int[][] a, int[][] dist, int n, int m, Queue<Pair7576> q) {
 		while(!q.isEmpty()) {
-			Pair2 p = q.remove();
+			Pair7576 p = q.remove();
 			int px = p.x;
 			int py = p.y;
 			for (int k = 0; k < 4; k++) {
@@ -26,7 +26,7 @@ public class B7576 {
 				if(nx >= 0 && nx < n && ny >= 0 && ny < m) {
 					if(a[nx][ny] == 0 && dist[nx][ny] == 0) {
 						dist[nx][ny] = dist[px][py] + 1;
-						q.add(new Pair2(nx,ny));
+						q.add(new Pair7576(nx,ny));
 					}					
 				}
 			}
@@ -43,14 +43,14 @@ public class B7576 {
 				a[i][j] = sc.nextInt();
 			}
 		}
-		Queue<Pair2> q = new LinkedList<Pair2>();
+		Queue<Pair7576> q = new LinkedList<Pair7576>();
 		
 		int[][] dist = new int[n][m];
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				if (a[i][j] == 1) {
 					dist[i][j] = 1;
-					q.add(new Pair2(i,j));
+					q.add(new Pair7576(i,j));
 				}else {
 					dist[i][j] = 0;					
 				}
