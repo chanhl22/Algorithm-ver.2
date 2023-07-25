@@ -3,13 +3,13 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-class Country implements Comparable<Country> {
+class Country8979 implements Comparable<Country8979> {
     int index;
     int gold;
     int silver;
     int bronze;
 
-    public Country(int index, int gold, int silver, int bronze) {
+    public Country8979(int index, int gold, int silver, int bronze) {
         this.index = index;
         this.gold = gold;
         this.silver = silver;
@@ -17,7 +17,7 @@ class Country implements Comparable<Country> {
     }
 
     @Override
-    public int compareTo(Country that) {
+    public int compareTo(Country8979 that) {
         if (this.gold < that.gold) {
             return 1;
         } else if (this.gold == that.gold) {
@@ -45,13 +45,13 @@ public class B8979 {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int k = sc.nextInt();
-        Country[] c = new Country[n];
+        Country8979[] c = new Country8979[n];
         for (int i = 0; i < n; i++) {
             int index = sc.nextInt() - 1;
             int g = sc.nextInt();
             int s = sc.nextInt();
             int b = sc.nextInt();
-            c[i] = new Country(index, g, s, b);
+            c[i] = new Country8979(index, g, s, b);
         }
         Arrays.sort(c);
         int[] rank = new int[n];
