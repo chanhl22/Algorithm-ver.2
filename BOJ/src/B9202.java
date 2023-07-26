@@ -1,13 +1,5 @@
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
 
 public class B9202 {
     static int[] mx = {-1, 1, 0, 0, -1, 1, -1, 1};
@@ -21,7 +13,7 @@ public class B9202 {
     static int sum;
     static int count;
     static StringBuilder sb = new StringBuilder();
-    static TrieNode root = new TrieNode();
+    static TrieNode9202 root = new TrieNode9202();
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -70,7 +62,7 @@ public class B9202 {
 
     }
 
-    static void search(int y, int x, int length, TrieNode node) {
+    static void search(int y, int x, int length, TrieNode9202 node) {
         // 1. 체크인
         visited[y][x] = true;
         sb.append(map[y][x]);
@@ -112,11 +104,11 @@ public class B9202 {
     }
 
     static void insert(String word) {
-        TrieNode current = root;
+        TrieNode9202 current = root;
         for (int i = 0; i < word.length(); i++) {
             int wordIndex = word.charAt(i) - 'A';
             if (current.children[wordIndex] == null) {
-                current.children[wordIndex] = new TrieNode();
+                current.children[wordIndex] = new TrieNode9202();
             }
             current = current.children[wordIndex];
         }
@@ -124,7 +116,7 @@ public class B9202 {
     }
 
     static boolean containsNode(String word) {
-        TrieNode current = root;
+        TrieNode9202 current = root;
         for (int i = 0; i < word.length(); i++) {
             int wordIndex = word.charAt(i) - 'A';
             if (current.children[wordIndex] == null) {
@@ -136,8 +128,8 @@ public class B9202 {
     }
 }
 
-class TrieNode {
-    TrieNode[] children = new TrieNode[26];
+class TrieNode9202 {
+    TrieNode9202[] children = new TrieNode9202[26];
     boolean isEnd;
     boolean isHit;
 
@@ -154,7 +146,7 @@ class TrieNode {
         return children[c - 'A'] != null;
     }
 
-    TrieNode getChild(char c) {
+    TrieNode9202 getChild(char c) {
         return children[c - 'A'];
     }
 
