@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-class Shark implements Comparable<Shark>{
+class Shark19237 implements Comparable<Shark19237>{
     int number, row, col;
-    Shark(int number, int row, int col) {
+    Shark19237(int number, int row, int col) {
         this.number = number;
         this.row = row;
         this.col = col;
     }
-    public int compareTo(Shark that) {
+    public int compareTo(Shark19237 that) {
         if (this.number < that.number) {
             return -1;
         } else if (this.number == that.number) {
@@ -59,17 +59,17 @@ class B19237 {
         return cnt == 1;
     }
     static void move_shark() {
-        ArrayList<Shark> v = new ArrayList<>();
+        ArrayList<Shark19237> v = new ArrayList<>();
         for (int i=0; i<n; i++) {
             for (int j=0; j<n; j++) {
                 shark_next[i][j] = 0;
                 if (shark[i][j] > 0) {
-                    v.add(new Shark(shark[i][j], i, j));
+                    v.add(new Shark19237(shark[i][j], i, j));
                 }
             }
         }
         Collections.sort(v);
-        for (Shark t : v) {
+        for (Shark19237 t : v) {
             int no = t.number;
             int x = t.row;
             int y = t.col;
