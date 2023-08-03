@@ -1,5 +1,6 @@
 /**
  * playtime = 01:57:09
+ * 반례 참고 = https://www.acmicpc.net/board/view/67748
  */
 
 import java.util.ArrayList;
