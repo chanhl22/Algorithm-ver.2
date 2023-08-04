@@ -1,5 +1,5 @@
 /**
- * palytime = 15:17
+ * playtime = 15:17
  */
 
 import java.util.Scanner;
