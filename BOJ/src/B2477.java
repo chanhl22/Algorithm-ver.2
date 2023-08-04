@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-class Field {
+class Field2477 {
     int index;
     int dir;
     int length;
 
-    public Field(int index, int dir, int length) {
+    public Field2477(int index, int dir, int length) {
         this.index = index;
         this.dir = dir;
         this.length = length;
@@ -35,52 +35,11 @@ class Field {
 
 public class B2477 {
     private static int k;
-    private static final ArrayList<Field> points = new ArrayList<>();
+    private static final ArrayList<Field2477> points = new ArrayList<>();
 
     public static void main(String[] args) {
         input();
         calculate();
-    }
-
-    private static void calculate() {
-        Field longHeight = findLongHeight();
-        Field longWidth = findLongWidth();
-
-        ArrayList<Integer> list = new ArrayList<>();
-        int longHeightIndex = longHeight.getIndex();
-        int i1 = (longHeightIndex + 1) % 6;
-        int i2 = (longHeightIndex + 5) % 6;
-        list.add(i1);
-        list.add(i2);
-
-        int longWidthIndex = longWidth.getIndex();
-        int i3 = (longWidthIndex + 1) % 6;
-        int i4 = (longWidthIndex + 5) % 6;
-        list.add(i3);
-        list.add(i4);
-
-        List<Integer> collect = points.stream()
-                .filter(point -> !list.contains(point.getIndex()))
-                .map(Field::getLength)
-                .collect(Collectors.toList());
-
-        System.out.println(k * ((longHeight.getLength() * longWidth.getLength()) - (collect.get(0) * collect.get(1))));
-    }
-
-    private static Field findLongHeight() {
-        List<Field> fields = points.stream()
-                .filter(point -> point.getDir() == 1 || point.getDir() == 2)
-                .collect(Collectors.toList());
-
-        return Collections.max(fields, Comparator.comparingInt(Field::getLength));
-    }
-
-    private static Field findLongWidth() {
-        List<Field> fields = points.stream()
-                .filter(point -> point.getDir() == 3 || point.getDir() == 4)
-                .collect(Collectors.toList());
-
-        return Collections.max(fields, Comparator.comparingInt(Field::getLength));
     }
 
     private static void input() {
@@ -89,7 +48,45 @@ public class B2477 {
         for (int i = 0; i < 6; i++) {
             int dir = sc.nextInt();
             int length = sc.nextInt();
-            points.add(new Field(i, dir, length));
+            points.add(new Field2477(i, dir, length));
         }
+    }
+
+    private static void calculate() {
+        Field2477 longHeight = findLongHeight();
+        Field2477 longWidth = findLongWidth();
+
+        List<Integer> legs = findShortLegs(longHeight, longWidth);
+
+        System.out.println(k * ((longHeight.getLength() * longWidth.getLength()) - (legs.get(0) * legs.get(1))));
+    }
+
+    private static Field2477 findLongHeight() {
+        List<Field2477> fields = points.stream()
+                .filter(point -> point.getDir() == 1 || point.getDir() == 2)
+                .collect(Collectors.toList());
+
+        return Collections.max(fields, Comparator.comparingInt(Field2477::getLength));
+    }
+
+    private static Field2477 findLongWidth() {
+        List<Field2477> fields = points.stream()
+                .filter(point -> point.getDir() == 3 || point.getDir() == 4)
+                .collect(Collectors.toList());
+
+        return Collections.max(fields, Comparator.comparingInt(Field2477::getLength));
+    }
+
+    private static List<Integer> findShortLegs(Field2477 longHeight, Field2477 longWidth) {
+        int longHeightIndex = longHeight.getIndex();
+        int shortHeightIndex = (longHeightIndex + 3) % 6;
+
+        int longWidthIndex = longWidth.getIndex();
+        int shortWidthIndex = (longWidthIndex + 3) % 6;
+
+        return points.stream()
+                .filter(point -> point.getIndex() == shortHeightIndex || point.getIndex() == shortWidthIndex)
+                .map(Field2477::getLength)
+                .collect(Collectors.toList());
     }
 }
