@@ -4,6 +4,7 @@
 
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.StringTokenizer;
 
 public class B7490 {
     private static int n;
@@ -53,28 +54,22 @@ public class B7490 {
     }
 
     private static int calculate(Stack<String> stack) {
-        StringBuilder temp = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         for (String s : stack) {
-            temp.append(s);
+            sb.append(s);
         }
-        String replaceAll = temp.toString().replaceAll(" ", "");
 
-        String[] numbers = replaceAll.split("[\\+\\-]");
-
-        String replaceAll1 = replaceAll.replaceAll("[0-9]", "");
-        String[] ops = replaceAll1.split("");
-
-        int result = Integer.parseInt(numbers[0]);
-        String tempOperator = "";
-        for (int i = 1; i < numbers.length; i++) {
-            tempOperator = ops[i - 1];
-            int tempNumber = Integer.parseInt(numbers[i]);
-            if ("+".equals(tempOperator)) {
-                result += tempNumber;
+        StringTokenizer st = new StringTokenizer(sb.toString().replaceAll(" ", ""), "-+", true);
+        int sum = Integer.parseInt(st.nextToken());
+        while(st.hasMoreTokens()) {
+            String op = st.nextToken();
+            String number = st.nextToken();
+            if ("+".equals(op)) {
+                sum += Integer.parseInt(number);
             } else {
-                result -= tempNumber;
+                sum -= Integer.parseInt(number);
             }
         }
-        return result;
+        return sum;
     }
 }
