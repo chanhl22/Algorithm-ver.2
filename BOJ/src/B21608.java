@@ -6,11 +6,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Student {
+class Student21608 {
     int index;
     ArrayList<Integer> likeStudents;
 
-    public Student(int index, ArrayList<Integer> likeStudent) {
+    public Student21608(int index, ArrayList<Integer> likeStudent) {
         this.index = index;
         this.likeStudents = likeStudent;
     }
@@ -24,11 +24,11 @@ class Student {
     }
 }
 
-class Pair {
+class Pair21608 {
     int x;
     int y;
 
-    public Pair(int x, int y) {
+    public Pair21608(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -45,7 +45,7 @@ class Pair {
 public class B21608 {
 
     private static int n;
-    private static final ArrayList<Student> students = new ArrayList<>();
+    private static final ArrayList<Student21608> students = new ArrayList<>();
     private static final int[] dx = {0, 0, -1, 1};
     private static final int[] dy = {-1, 1, 0, 0};
 
@@ -66,14 +66,14 @@ public class B21608 {
             for (int i = 0; i < 4; i++) {
                 inputLikeStudents.add(sc.nextInt());
             }
-            students.add(new Student(inputIndex, inputLikeStudents));
+            students.add(new Student21608(inputIndex, inputLikeStudents));
         }
     }
 
     private static void updateSeat(int[][] seat) {
         for (int i = 0; i < n * n; i++) {
-            Student student = students.get(i);
-            ArrayList<Pair> possibleSeats = findPossibleSeats(seat, student.getLikeStudents());
+            Student21608 student = students.get(i);
+            ArrayList<Pair21608> possibleSeats = findPossibleSeats(seat, student.getLikeStudents());
             decideSeat(seat, possibleSeats, student.getIndex());
         }
         System.out.println(sumSatisfaction(seat));
@@ -81,7 +81,7 @@ public class B21608 {
 
     private static int sumSatisfaction(int[][] seat) {
         int answer = 0;
-        for (Student student : students) {
+        for (Student21608 student : students) {
             int count = 0;
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
@@ -113,13 +113,13 @@ public class B21608 {
         return answer;
     }
 
-    private static ArrayList<Pair> findPossibleSeats(int[][] seat, ArrayList<Integer> likeStudents) {
-        ArrayList<Pair> possibleSeats = new ArrayList<>();
+    private static ArrayList<Pair21608> findPossibleSeats(int[][] seat, ArrayList<Integer> likeStudents) {
+        ArrayList<Pair21608> possibleSeats = new ArrayList<>();
         if (noLikeStudent(seat, likeStudents)) {
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     if (seat[i][j] == 0) {
-                        possibleSeats.add(new Pair(i, j));
+                        possibleSeats.add(new Pair21608(i, j));
                     }
                 }
             }
@@ -147,7 +147,7 @@ public class B21608 {
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     if (countLikeStudent[i][j] == maxLikeStudent && seat[i][j] == 0) {
-                        possibleSeats.add(new Pair(i, j));
+                        possibleSeats.add(new Pair21608(i, j));
                     }
                 }
             }
@@ -175,11 +175,11 @@ public class B21608 {
         return true;
     }
 
-    private static void decideSeat(int[][] seat, ArrayList<Pair> possibleSeats, int studentIndex) {
+    private static void decideSeat(int[][] seat, ArrayList<Pair21608> possibleSeats, int studentIndex) {
         int findX = 0;
         int findY = 0;
         int emptyCount = -1;
-        for (Pair possibleSeat : possibleSeats) {
+        for (Pair21608 possibleSeat : possibleSeats) {
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     if (possibleSeat.getX() == i && possibleSeat.getY() == j) {
