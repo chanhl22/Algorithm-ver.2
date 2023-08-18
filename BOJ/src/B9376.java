@@ -2,11 +2,11 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Scanner;
 
-class Pair15 {
+class Pair9376 {
     int x;
     int y;
 
-    public Pair15(int x, int y) {
+    public Pair9376(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -19,7 +19,7 @@ public class B9376 {
     static int[][] bfs(char[][] a, int x, int y) {
         int h = a.length;
         int w = a[0].length;
-        Deque<Pair15> dq = new ArrayDeque<>();
+        Deque<Pair9376> dq = new ArrayDeque<>();
         int[][] d = new int[h][w];
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
@@ -27,11 +27,11 @@ public class B9376 {
             }
         }
         boolean[][] check = new boolean[h][w];
-        dq.add(new Pair15(x, y));
+        dq.add(new Pair9376(x, y));
         d[x][y] = 0;
         check[x][y] = true;
         while (!dq.isEmpty()) {
-            Pair15 p = dq.poll();
+            Pair9376 p = dq.poll();
             int px = p.x;
             int py = p.y;
             for (int k = 0; k < 4; k++) {
@@ -41,12 +41,12 @@ public class B9376 {
                 if (a[nx][ny] == '*') continue;
                 if (check[nx][ny] == true) continue;
                 if (a[nx][ny] == '.') {
-                    dq.addFirst(new Pair15(nx, ny));
+                    dq.addFirst(new Pair9376(nx, ny));
                     check[nx][ny] = true;
                     d[nx][ny] = d[px][py];
                 }
                 if (a[nx][ny] == '#') {
-                    dq.addLast(new Pair15(nx, ny));
+                    dq.addLast(new Pair9376(nx, ny));
                     check[nx][ny] = true;
                     d[nx][ny] = d[px][py] + 1;
                 }
