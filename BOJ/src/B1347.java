@@ -1,5 +1,5 @@
 /**
- * 40:19 안풀림;;
+ * playtime = 01:05:08
  */
 
 import java.util.Scanner;
@@ -13,12 +13,16 @@ public class B1347 {
      * 하 - 2
      * 좌 - 3
      */
-    private static final int[] dirX = {0, 1, 0, -1};
-    private static final int[] dirY = {-1, 0, 1, 0};
+    private static final int[] dirX = {-1, 0, 1, 0};
+    private static final int[] dirY = {0, 1, 0, -1};
     private static int currentDir = 2;
-    private static int[][] map = new int[103][103];
-    private static int startX = 51;
-    private static int startY = 51;
+    private static int currentX = 51;
+    private static int currentY = 51;
+    private static int minX = 51;
+    private static int maxX = 51;
+    private static int minY = 51;
+    private static int maxY = 51;
+    private static final int[][] map = new int[103][103];
 
     public static void main(String[] args) {
         input();
@@ -32,7 +36,7 @@ public class B1347 {
     }
 
     private static void solution() {
-        map[startX][startY] = 1;
+        map[currentX][currentY] = 1;
         for (int i = 0; i < input.length(); i++) {
             move(input.charAt(i));
         }
@@ -40,44 +44,18 @@ public class B1347 {
     }
 
     private static void calculate() {
-        int firstX = 0;
-        int firstY = 0;
-        int endX = 0;
-        int endY = 0;
-        boolean flag = true;
         for (int i = 0; i < 103; i++) {
             for (int j = 0; j < 103; j++) {
-                if (flag && map[i][j] == 1) {
-                    firstX = i;
-                    firstY = j;
-                    flag = false;
-                }
-                if (map[i][j] == 1) {
-                    endX = i;
-                    endY = j;
-                }
-            }
-        }
-
-        int mapFirstX = Math.min(firstX, endX);
-        int mapEndX = Math.max(firstX, endX);
-        int mapFirstY = Math.min(firstY, endY);
-        int mapEndY = Math.max(firstY, endY);
-
-        for (int i = 0; i < 103; i++) {
-            boolean check = false;
-            for (int j = 0; j < 103; j++) {
-                if (mapFirstX <= i && i <= mapEndX && mapFirstY <= j && j <= mapEndY) {
-                    check = true;
-                    if (map[i][j] == 0) {
-                        System.out.print("#");
-                    } else {
+                if (minX <= i && i <= maxX && minY <= j && j <= maxY) {
+                    if (map[i][j] == 1) {
                         System.out.print(".");
+                    } else {
+                        System.out.print("#");
+                    }
+                    if (j == maxY) {
+                        System.out.println();
                     }
                 }
-            }
-            if (check) {
-                System.out.println();
             }
         }
     }
@@ -88,7 +66,27 @@ public class B1347 {
         } else if (charAt == 'R') {
             currentDir = (currentDir + 1) % 4;
         } else {
-            map[startX + dirX[currentDir]][startY + dirY[currentDir]] = 1;
+            updateMapInfo();
         }
+    }
+
+    private static void updateMapInfo() {
+        currentX = currentX + dirX[currentDir];
+        currentY = currentY + dirY[currentDir];
+
+        if (minX > currentX) {
+            minX = currentX;
+        }
+        if (maxX < currentX) {
+            maxX = currentX;
+        }
+        if (minY > currentY) {
+            minY = currentY;
+        }
+        if (maxY < currentY) {
+            maxY = currentY;
+        }
+
+        map[currentX][currentY] = 1;
     }
 }
