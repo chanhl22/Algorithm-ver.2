@@ -4,7 +4,7 @@
 
 import java.util.Scanner;
 
-class B10431 {
+class B5073 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (true) {
