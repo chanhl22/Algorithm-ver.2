@@ -1,13 +1,11 @@
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
-class Card {
+class Card2621 {
     char color;
     int number;
 
-    public Card(char color, int number) {
+    public Card2621(char color, int number) {
         this.color = color;
         this.number = number;
     }
@@ -16,11 +14,11 @@ class Card {
 public class B2621 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Card[] cards = new Card[5];
+        Card2621[] cards = new Card2621[5];
         for (int i = 0; i < 5; i++) {
             String s = sc.next();
             int n = sc.nextInt();
-            cards[i] = new Card(s.charAt(0), n);
+            cards[i] = new Card2621(s.charAt(0), n);
         }
         Arrays.sort(cards, (x, y) -> x.number - y.number);
         int max = cards[4].number;
