@@ -13,12 +13,12 @@ class Piece2 {
 	}
 }
 
-class Pair10 {
+class Pair17837 {
 	int row;
 	int col;
 	int index;
 
-	Pair10(int row, int col, int index) {
+	Pair17837(int row, int col, int index) {
 		this.row = row;
 		this.col = col;
 		this.index = index;
@@ -29,11 +29,11 @@ public class B17837 {
 	static int[] dx = { 0, 0, -1, 1 };
 	static int[] dy = { 1, -1, 0, 0 };
 
-	static void go(ArrayList<Piece2>[][] a, Pair10[] where, int x, int y, int nx, int ny, int index) {
+	static void go(ArrayList<Piece2>[][] a, Pair17837[] where, int x, int y, int nx, int ny, int index) {
 		for (int i = index; i < a[x][y].size(); i++) {
 			Piece2 p = a[x][y].get(i);
 			a[nx][ny].add(p);
-			where[p.no] = new Pair10(nx, ny, a[nx][ny].size() - 1);
+			where[p.no] = new Pair17837(nx, ny, a[nx][ny].size() - 1);
 		}
 		a[x][y] = new ArrayList<>(a[x][y].subList(0, index));
 	}
@@ -63,13 +63,13 @@ public class B17837 {
 				a[i][j] = new ArrayList<>();
 			}
 		}
-		Pair10[] where = new Pair10[k];
+		Pair17837[] where = new Pair17837[k];
 		for (int i = 0; i < k; i++) {
 			int x = sc.nextInt() - 1;
 			int y = sc.nextInt() - 1;
 			int dir = sc.nextInt() - 1;
 			a[x][y].add(new Piece2(i, dir));
-			where[i] = new Pair10(x, y, a[x][y].size() - 1);
+			where[i] = new Pair17837(x, y, a[x][y].size() - 1);
 		}
 
 		// 1000������ �̵��ϰ� ������ ���ٸ� -1
