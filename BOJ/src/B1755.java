@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 
-class Number {
+class Number1755 {
     int number;
     String english;
 
-    public Number(int number, String english) {
+    public Number1755(int number, String english) {
         this.number = number;
         this.english = english;
     }
@@ -19,7 +19,7 @@ class Number {
 public class B1755 {
     private static int m;
     private static int n;
-    private static final ArrayList<Number> numbers = new ArrayList<>();
+    private static final ArrayList<Number1755> numbers = new ArrayList<>();
 
     public static void main(String[] args) {
         input();
@@ -50,9 +50,9 @@ public class B1755 {
             String tenthDigitString = change(tenthDigit);
             String firstDigitString = change(firstDigit);
             if (tenthDigitString.equals("zero")) {
-                numbers.add(new Number(i, firstDigitString));
+                numbers.add(new Number1755(i, firstDigitString));
             } else {
-                numbers.add(new Number(i, tenthDigitString + " " + firstDigitString));
+                numbers.add(new Number1755(i, tenthDigitString + " " + firstDigitString));
             }
         }
     }
