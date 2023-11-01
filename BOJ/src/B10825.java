@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-class Score {
+class Score10825 {
     String name;
     int korean;
     int english;
     int math;
 
-    public Score(String name, int korean, int english, int math) {
+    public Score10825(String name, int korean, int english, int math) {
         this.name = name;
         this.korean = korean;
         this.english = english;
@@ -22,7 +22,7 @@ class Score {
 
 public class B10825 {
 
-    private static List<Score> scores = new ArrayList<>();
+    private static List<Score10825> scores = new ArrayList<>();
 
     public static void main(String[] args) {
         input();
@@ -33,7 +33,7 @@ public class B10825 {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         for (int i = 0; i < n; i++) {
-            scores.add(new Score(sc.next(), sc.nextInt(), sc.nextInt(), sc.nextInt()));
+            scores.add(new Score10825(sc.next(), sc.nextInt(), sc.nextInt(), sc.nextInt()));
         }
     }
 
@@ -54,7 +54,7 @@ public class B10825 {
             }
         });
 
-        for (Score score : scores) {
+        for (Score10825 score : scores) {
             System.out.println(score.name);
         }
     }
