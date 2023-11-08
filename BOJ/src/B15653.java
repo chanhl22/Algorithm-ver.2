@@ -2,13 +2,13 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Points{
+class Points15653 {
     int rx;
     int ry;
     int bx;
     int by;
 
-    public Points(int rx, int ry, int bx, int by) {
+    public Points15653(int rx, int ry, int bx, int by) {
         this.rx = rx;
         this.ry = ry;
         this.bx = bx;
@@ -27,7 +27,7 @@ public class B15653 {
             a[i] = sc.next().toCharArray();
         }
         // bfs init
-        Queue<Points> q = new LinkedList<>();
+        Queue<Points15653> q = new LinkedList<>();
         int rx = 0;
         int ry = 0;
         int bx = 0;
@@ -43,9 +43,9 @@ public class B15653 {
                 }
             }
         }
-        q.add(new Points(rx, ry, bx, by));
+        q.add(new Points15653(rx, ry, bx, by));
         while (!q.isEmpty()) {
-            Points temp = q.remove();
+            Points15653 temp = q.remove();
             rx = temp.rx;
             ry = temp.ry;
             bx = temp.bx;
