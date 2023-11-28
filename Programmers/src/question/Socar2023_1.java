@@ -1,3 +1,7 @@
+/**
+ * 풀이방법 : 펜윅트리? 세그트리?
+ */
+
 package question;
 
 import java.util.ArrayList;
