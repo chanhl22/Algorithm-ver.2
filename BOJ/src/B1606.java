@@ -1,14 +1,14 @@
 /**
- * 01:33:20
- * 시간초과 못품
+ * playtime = 02h 17m 30s
  */
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class B1606 {
 
-    private static int x;
-    private static int y;
+    private static long x;
+    private static long y;
 
     public static void main(String[] args) {
         input();
@@ -16,27 +16,37 @@ public class B1606 {
     }
 
     private static void solution() {
-        int index = 1;
-        for (int i = 0; i <= 1000000; i++) {
-            find(i, 0, index);
-            for (int j = 1, nx = i, ny = 1; j < i + 2; j++, nx--, ny++) {
-                find(nx, ny, index + j);
-            }
-            index += 6 * (i + 1);
-        }
+        BigInteger positionX = calX();
+        BigInteger positionY = calY(positionX);
+        System.out.println(positionY);
     }
 
-    private static void find(int currentX, int currentY, int index) {
-        if (currentX == x && currentY == y) {
-            System.out.println(index);
-            System.exit(0);
+    private static BigInteger calX() {
+        long moveX;
+        if (y == 0) {
+            moveX = x;
+        } else {
+            moveX = x + y - 1;
         }
+
+        BigInteger monkeyX = BigInteger.valueOf(1);
+        for (long i = 1; i <= moveX; i++) {
+            long l = 6 * i;
+            BigInteger bigInteger = BigInteger.valueOf(l);
+            monkeyX = monkeyX.add(bigInteger);
+        }
+
+        return monkeyX;
+    }
+
+    private static BigInteger calY(BigInteger positionX) {
+        return positionX.add(BigInteger.valueOf(y));
     }
 
     private static void input() {
         Scanner sc = new Scanner(System.in);
-        x = sc.nextInt();
-        y = sc.nextInt();
+        x = sc.nextLong();
+        y = sc.nextLong();
     }
 }
 
@@ -45,5 +55,5 @@ public class B1606 {
  * 7 (1,0) 8 (1,1) 9 (0,2)
  * 19 (2,0) 20(2,1) 21(1,2) 22(0,3)
  * 37 (3,0) 38(3,1) 39(2,2) 40(1,3) 41(0,4)
- * 61
+ * 61 (4,0) 62(4,1) 63(3,2) 64(2,3) 65(1,4) 66(0,5)
  */
