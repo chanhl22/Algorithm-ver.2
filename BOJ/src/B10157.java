@@ -1,6 +1,6 @@
 /**
  * playtime = 01:27:12
- * 40%쯤 틀림
+ * 출력초과
  */
 
 import java.util.Scanner;
@@ -13,12 +13,12 @@ public class B10157 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        c = sc.nextInt(); //row
-        r = sc.nextInt(); //column
+        c = sc.nextInt(); //column
+        r = sc.nextInt(); //row
         find = sc.nextInt();
 
-        int row = c;
-        int column = r;
+        int row = r;
+        int column = c;
         int storage = 1;
         int index = 0;
         while (!isEmpty(row, column)) {
@@ -32,6 +32,8 @@ public class B10157 {
     }
 
     private static void findPosition(int index, int row, int column, int storage) {
+
+        System.out.println("index = " + index + ", row = " + row + ", column = " + column + ", storage = " + storage);
 
         int startX1 = index;
         int startY1 = index;
@@ -73,11 +75,11 @@ public class B10157 {
     }
 
     private static boolean isEmpty(int row, int column) {
-        return row * 2 + column * 2 - 4 <= 0;
+        return row * 2 + column * 2 - 4 < 0;
     }
 }
 /**
- * 1  2  3  4  5  6
+ *  1  2  3  4  5  6
  * 22 23 24 25 26  7
  * 21 36 37 38 27  8
  * 20 35 42 39 28  9
