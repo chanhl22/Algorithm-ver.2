@@ -1,36 +1,49 @@
 /**
- * playtime = 11:00
- * 풀이횟수 = 3
+ * playtime = 13:36
+ * 풀이횟수 = 4
  */
 
 import java.util.Scanner;
 
 public class B9095 {
+
+	private static int[] list;
+
 	public static void main(String[] args) {
+		input();
+		solution();
+	}
+
+	private static void input() {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
+		list = new int[n];
 		for (int i = 0; i < n; i++) {
-			int input = sc.nextInt();
-			System.out.println(findWay(input, 0));
+			list[i] = sc.nextInt();
 		}
 	}
 
-	private static int findWay(int input, int sum) {
-		if (sum > input) {
-			return 0;
+	private static void solution() {
+		for (int i : list) {
+			System.out.println(recursive(0, i));
 		}
+	}
 
-		if (sum == input) {
+	private static int recursive(int sum, int goal) {
+		if (sum == goal) {
 			return 1;
 		}
 
-		int answer = 0;
-		for (int i = 1; i <= 3; i++) {
-			sum += i;
-			answer += findWay(input, sum);
-			sum -= i;
+		if (sum > goal) {
+			return 0;
 		}
-		return answer;
+
+		int result = 0;
+		for (int i = 1; i <= 3; i++) {
+			result += recursive(sum + i, goal);
+		}
+
+		return result;
 	}
 }
 
