@@ -1,6 +1,6 @@
 /**
- * playtime = 18:52
- * 풀이횟수 = 2
+ * playtime = 16:04
+ * 풀이횟수 = 3
  */
 
 import java.util.LinkedList;
@@ -9,33 +9,34 @@ import java.util.Scanner;
 
 public class B2178 {
 
-    static final int[] dx = {0, 0, -1, 1};
-    static final int[] dy = {-1, 1, 0, 0};
+    private static int n;
+    private static int m;
+    private static int[][] map;
+    private static final int[] dx = {0, 0, -1, 1};
+    private static final int[] dy = {-1, 1, 0, 0};
 
     public static void main(String[] args) {
+        input();
+        solution();
+    }
+
+    private static void input() {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-        int[][] map = new int[n][m];
+        n = sc.nextInt();
+        m = sc.nextInt();
+        map = new int[n][m];
         for (int i = 0; i < n; i++) {
             String input = sc.next();
-            for (int j = 0; j < input.length(); j++) {
+            for (int j = 0; j < m; j++) {
                 map[i][j] = input.charAt(j) - '0';
             }
         }
-
-        bfs(map, n, m);
     }
 
-    private static void bfs(int[][] map, int n, int m) {
+    private static void solution() {
         Queue<Integer> q = new LinkedList<>();
         q.add(0);
         q.add(0);
-        boolean[][] check = new boolean[n][m];
-        check[0][0] = true;
-        int[][] record = new int[n][m];
-        record[0][0] = 1;
-
         while (!q.isEmpty()) {
             int x = q.remove();
             int y = q.remove();
@@ -43,19 +44,15 @@ public class B2178 {
                 int nx = x + dx[k];
                 int ny = y + dy[k];
                 if (nx >= 0 && nx < n && ny >= 0 && ny < m) {
-                    if (!check[nx][ny] && map[nx][ny] == 1) {
+                    if (map[nx][ny] == 1) {
                         q.add(nx);
                         q.add(ny);
-                        check[nx][ny] = true;
-                        record[nx][ny] = record[x][y] + 1;
+                        map[nx][ny] = map[x][y] + 1;
                     }
                 }
             }
         }
-
-        if (check[n - 1][m - 1]) {
-            System.out.println(record[n-1][m-1]);
-        }
+        System.out.println(map[n - 1][m - 1]);
     }
 }
 
