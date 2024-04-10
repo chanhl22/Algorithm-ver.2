@@ -1,3 +1,8 @@
+/**
+ * playtime =
+ * 풀이횟수 = 1
+ */
+
 import java.util.Arrays;
 import java.util.Scanner;
 
