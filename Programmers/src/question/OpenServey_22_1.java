@@ -1,5 +1,10 @@
 package question;
 
+/**
+ * for 문 하나로 체크했으면 시간 복잡도에 걸리지 않았을거 같은데..
+ * a-i, c+i
+ */
+
 class Solution123 {
     public int solution(int b) {
         int answer = -1;
