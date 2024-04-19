@@ -3,6 +3,8 @@ package question;
 import java.util.TreeSet;
 
 /**
+ * 참고: 백준 1740
+ *
  * 1 -> 1개
  * 3 4 -> 2개
  * 9 10 12 13 -> 4개
