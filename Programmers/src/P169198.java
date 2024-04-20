@@ -22,7 +22,7 @@ public class P169198 {
 //        System.out.println(
 //                Arrays.toString(
 //                        sol.solution(10, 10, 3, 7, new int[][]{{2, 7}})
-//                )); //{116}
+//                )); //{37}
     }
 
     static class Solution {
