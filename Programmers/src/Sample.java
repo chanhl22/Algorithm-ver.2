@@ -1,3 +1,4 @@
+/**
 class Solution {
     public int solution(int[] numbers, int target) {
         int answer = 0;
@@ -5,6 +6,7 @@ class Solution {
         return answer;
     }
 }
+*/
 
 public class Sample {
     public static void main(String[] args) {
@@ -12,5 +14,13 @@ public class Sample {
         int ans = 0;
         ans = sol.solution(new int[]{1, 1, 1, 1, 1}, 3);
         System.out.println(ans);
+    }
+
+    static class Solution {
+        public int solution(int[] numbers, int target) {
+            int answer = 0;
+
+            return answer;
+        }
     }
 }
