@@ -1,4 +1,4 @@
-package question;
+package question.trenbe;
 
 /**
  * 문자열 중에 가장 많이 있는 문자열을 찾는 문제

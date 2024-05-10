@@ -1,4 +1,4 @@
-package question;
+package question.trenbe;
 
 /**
  * 랭킹을 구하는 문제

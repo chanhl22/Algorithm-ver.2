@@ -1,4 +1,4 @@
-package question;
+package question.trenbe;
 
 public class Trend4 {
 }
