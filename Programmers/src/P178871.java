@@ -1,55 +1,54 @@
-/**
- * playtime = 01:31:48
- */
-
 import java.util.Arrays;
 import java.util.HashMap;
 
-class Solution178871 {
-    public String[] solution(String[] players, String[] callings) {
-        HashMap<String, Integer> name = new HashMap<>();
-        initName(name, players);
-
-        HashMap<Integer, String> rank = new HashMap<>();
-        initRank(rank, players);
-
-        for (String currentName : callings) {
-            Integer currentIndex = name.get(currentName);
-            String beforeName = rank.get(currentIndex - 1);
-            Integer beforeIndex = name.get(beforeName);
-
-            name.put(currentName, beforeIndex);
-            name.put(beforeName, currentIndex);
-            rank.put(currentIndex, beforeName);
-            rank.put(beforeIndex, currentName);
-        }
-
-        String[] answer = new String[players.length];
-        for (int i = 0; i < rank.size(); i++) {
-            answer[i] = rank.get(i);
-        }
-
-        return answer;
-    }
-
-    private void initName(HashMap<String, Integer> map, String[] players) {
-        for (int i = 0; i < players.length; i++) {
-            map.put(players[i], i);
-        }
-    }
-
-    private void initRank(HashMap<Integer, String> map, String[] players) {
-        for (int i = 0; i < players.length; i++) {
-            map.put(i, players[i]);
-        }
-    }
-}
+/**
+ * playtime = 21:45
+ * 풀이횟수 = 2
+ */
 
 public class P178871 {
     public static void main(String[] args) {
-        Solution178871 sol = new Solution178871();
+        Solution sol = new Solution();
         String[] ans = sol.solution(new String[]{"mumu", "soe", "poe", "kai", "mine"},
                 new String[]{"kai", "kai", "mine", "mine"});
         System.out.println(Arrays.toString(ans));
+    }
+
+    static class Solution {
+        public String[] solution(String[] players, String[] callings) {
+            String[] result = new String[players.length];
+
+            HashMap<String, Integer> nameMap = new HashMap<>();
+            for (int rank = 0; rank < players.length; rank++) {
+                nameMap.put(players[rank], rank);
+            }
+
+            HashMap<Integer, String> rankMap = new HashMap<>();
+            for (int rank = 0; rank < players.length; rank++) {
+                rankMap.put(rank, players[rank]);
+            }
+
+            swap(callings, nameMap, rankMap);
+
+            for (int i = 0; i < result.length; i++) {
+                result[i] = rankMap.get(i);
+            }
+
+            return result;
+        }
+
+        private void swap(String[] callings, HashMap<String, Integer> nameMap, HashMap<Integer, String> rankMap) {
+            for (String calling : callings) {
+                Integer curRank = nameMap.get(calling);
+                String curName = rankMap.get(curRank);
+                String beforeName = rankMap.get(curRank - 1);
+                Integer beforeRank = nameMap.get(beforeName);
+
+                nameMap.put(beforeName, curRank);
+                nameMap.put(curName, beforeRank);
+                rankMap.put(beforeRank, curName);
+                rankMap.put(curRank, beforeName);
+            }
+        }
     }
 }
