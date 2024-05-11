@@ -53,7 +53,9 @@ public class B1202 {
 }
 
 /**
- * TreeMap 으로 처리하면 시간초과 발생
+ * TreeMap 으로 처리하면 시간초과 발생 -> 우선순위 큐를 list로 바꾸면 O(logN) -> O(1)로 바뀌면서 시간초과발생 x
+ * 하지만 그래도 틀림 (예외케이스 존재 -> 중복된 키가 발생할 수 있음)
+ * 즉, 아래의 코드는 잘못된 코드임
  *
  import java.util.Comparator;
  import java.util.Map;
