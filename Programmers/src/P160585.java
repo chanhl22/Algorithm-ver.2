@@ -1,7 +1,91 @@
 /**
- * playtime = 03:11:15
+ * playtime = 59m12s
  */
 
+public class P160585 {
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int ans = 0;
+//        ans = sol.solution(new String[]{"O.X", ".O.", "..X"});
+//        ans = sol.solution(new String[]{"OOO", "...", "XXX"});
+//        ans = sol.solution(new String[]{"OXO", "OXO", "XX."});
+//        ans = sol.solution(new String[]{"OXO", "OXX", "OOX"});
+        ans = sol.solution(new String[]{"OOO", "OXX", "OXX"}); //1
+//        ans = sol.solution(new String[]{"OXO", "X.X", "XOX"});
+        System.out.println(ans);
+    }
+
+    static class Solution {
+
+        private static final int LEN = 3;
+
+        public int solution(String[] board) {
+            // 불가능한 경우
+            // 1. X가 더 많은 경우
+            int xCount = getCount(board, 'X');
+            int oCount = getCount(board, 'O');
+            if (xCount > oCount) {
+                return 0;
+            }
+
+            // 2. O - X의 개수 차가 2 이상인 경우
+            if (oCount - xCount >= 2) {
+                return 0;
+            }
+
+            // 3. O가 이겼는데 O와 X의 개수가 같은 경우
+            if (isWin(board, 'O')) {
+                if (oCount == xCount) {
+                    return 0;
+                }
+            }
+
+            // 4. X가 이겼는데 O가 1개 더 많은 경우
+            if (isWin(board, 'X')) {
+                if (oCount - xCount == 1) {
+                    return 0;
+                }
+            }
+            return 1;
+        }
+
+        private int getCount(String[] board, char c) {
+            int count = 0;
+            for (int i = 0; i < LEN; i++) {
+                for (int j = 0; j < LEN; j++) {
+                    if (board[i].charAt(j) == c) {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
+        private boolean isWin(String[] board, char c) {
+            for (int i = 0; i < LEN; i++) {
+                if (board[i].charAt(0) == c && board[i].charAt(1) == c && board[i].charAt(2) == c) {
+                    return true;
+                }
+            }
+            for (int i = 0; i < LEN; i++) {
+                if (board[0].charAt(i) == c && board[1].charAt(i) == c && board[2].charAt(i) == c) {
+                    return true;
+                }
+            }
+            if (board[0].charAt(0) == c && board[1].charAt(1) == c && board[2].charAt(2) == c) {
+                return true;
+            }
+            if (board[2].charAt(0) == c && board[1].charAt(1) == c && board[0].charAt(2) == c) {
+                return true;
+            }
+            return false;
+        }
+    }
+}
+
+/**
+ * playtime = 03:11:15
+ *
 class Solution160585 {
     private static final int LEN = 3;
 
@@ -96,12 +180,13 @@ public class P160585 {
     public static void main(String[] args) {
         Solution160585 sol = new Solution160585();
         int ans = 0;
-//        ans = sol.solution(new String[]{"O.X", ".O.", "..X"});
-//        ans = sol.solution(new String[]{"OOO", "...", "XXX"});
-//        ans = sol.solution(new String[]{"OXO", "OXO", "XX."});
-//        ans = sol.solution(new String[]{"OXO", "OXX", "OOX"});
-//        ans = sol.solution(new String[]{"OOO", "OXX", "OXX"}); //0
-        ans = sol.solution(new String[]{"OXO", "X.X", "XOX"});
+        //        ans = sol.solution(new String[]{"O.X", ".O.", "..X"});
+        //        ans = sol.solution(new String[]{"OOO", "...", "XXX"});
+        //        ans = sol.solution(new String[]{"OXO", "OXO", "XX."});
+        //        ans = sol.solution(new String[]{"OXO", "OXX", "OOX"});
+                ans = sol.solution(new String[]{"OOO", "OXX", "OXX"}); //1
+//        ans = sol.solution(new String[]{"OXO", "X.X", "XOX"});
         System.out.println(ans);
     }
 }
+*/
