@@ -1,3 +1,37 @@
+/**
+ * playtime = 45m 52s
+ * 풀이횟수 = 2
+ */
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class P42578 {
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int ans = 0;
+//        ans = sol.solution(new String[][]{{"yellow_hat", "headgear"}, {"blue_sunglasses", "eyewear"}, {"green_turban", "headgear"}});
+        ans = sol.solution(new String[][]{{"crow_mask", "face"}, {"blue_sunglasses", "face"}, {"smoky_makeup", "face"}});
+        System.out.println(ans);
+    }
+
+    static class Solution {
+        public int solution(String[][] clothes) {
+            Map<String, Long> map = Arrays.stream(clothes)
+                    .collect(Collectors.groupingBy(c -> c[1], Collectors.counting()));
+
+            int result = 1;
+            for (String s : map.keySet()) {
+               result *= map.get(s) + 1;
+            }
+
+            return result - 1;
+        }
+    }
+}
+
+/**
 import java.util.HashMap;
 
 class Solution32 {
@@ -31,3 +65,4 @@ public class P42578 {
         System.out.println(ans);
     }
 }
+*/
