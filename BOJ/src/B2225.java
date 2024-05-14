@@ -9,9 +9,9 @@ public class B2225 {
 		
 		long[][] d = new long[k+1][n+1];
 		d[0][0] = 1;
-		for (int i = 1; i <= k; i++) { //k°³ÀÇ °³¼ö
-			for (int j = 0; j <= n; j++) { //ÇÕÀÇ °æ¿ìÀÇ ¼ö
-				for (int l = 0; l <= j; l++) { //¸¶Áö¸· ¼ö
+		for (int i = 1; i <= k; i++) { //kì˜ ê°œìˆ˜
+			for (int j = 0; j <= n; j++) { //í•©ì˜ ê²½ìš°ì˜ ìˆ˜
+				for (int l = 0; l <= j; l++) { //ë§ˆì§€ë§‰ ìˆ˜
 					d[i][j] += d[i-1][j-l];
 					d[i][j] %= 1000000000;
 				}
