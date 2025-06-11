@@ -25,10 +25,8 @@ public class P388351 {
     static class Solution {
         public int solution(int[] schedules, int[][] timelogs, int startday) {
             int excludeDay = (7 - startday) % 7;
-            int exclude1 = excludeDay == 0 ? 7 : excludeDay;
-            int exclude2 = excludeDay + 1;
-            int excludeIndex1 = exclude1 - 1;
-            int excludeIndex2 = exclude2 - 1;
+            int sun = excludeDay;
+            int sat = excludeDay == 0 ? 6 : excludeDay - 1;
 
             ArrayList<Integer> schedulesList = convertSchedulesInt(schedules);
             ArrayList<ArrayList<Integer>> timeLogsList = convertTimeLogsInt(timelogs);
@@ -38,8 +36,8 @@ public class P388351 {
                 Integer currentSchedule = schedulesList.get(i);
                 ArrayList<Integer> currentTimeLogs = timeLogsList.get(i);
                 boolean allMatch = IntStream.range(0, currentTimeLogs.size())
-                        .filter(index -> index != excludeIndex1)
-                        .filter(index -> index != excludeIndex2)
+                        .filter(index -> index != sun)
+                        .filter(index -> index != sat)
                         .mapToObj(currentTimeLogs::get)
                         .allMatch(currentTimeLog -> currentTimeLog <= currentSchedule + 10);
                 if (allMatch) {
