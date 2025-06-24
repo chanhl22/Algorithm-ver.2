@@ -11,7 +11,7 @@ class Second(
 }
 
 fun main() {
-    val second = Second(0);
+    val second = Second(0)
     println(second) // class
     println(second.sum(1).sub(10).result()) // -9
     println(second.sum(1).sub(10).dev(1).result()) // -9 / 1 = -9
