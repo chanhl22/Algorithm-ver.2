@@ -12,7 +12,8 @@ public class P118667 {
         int ans = 0;
 //        ans = sol.solution(new int[]{3, 2, 7, 2}, new int[]{4, 6, 5, 1});
 //        ans = sol.solution(new int[]{1, 1}, new int[]{1, 5});
-        ans = sol.solution(new int[]{9, 7, 2}, new int[]{9, 2, 11}); //3
+//        ans = sol.solution(new int[]{9, 7, 2}, new int[]{9, 2, 11}); //3
+        ans = sol.solution(new int[]{1, 1, 1, 1, 1}, new int[]{1, 1, 1, 9, 1}); //12
         System.out.println(ans);
     }
 
@@ -34,7 +35,9 @@ public class P118667 {
 
                 answer++;
 
-                if (answer > (q1.size() + q2.size()) * 4) {
+                //최대 케이스는 q1.size() + q2.size() + 2임
+                //사실 그냥 냅다 * 2로 널널하게 처리하는게 맘편
+                if (answer > (q1.size() + q2.size()) + 2) {
                     return -1;
                 }
 
